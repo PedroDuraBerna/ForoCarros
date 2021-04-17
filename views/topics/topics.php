@@ -2,7 +2,7 @@
 <!-- STYLE -->
 
     <style>
-        #loginIcon {
+        #searchIcon {
             background-color: #a52a2a;
         }
     </style>

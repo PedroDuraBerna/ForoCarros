@@ -1,3 +1,5 @@
+/* MOBILE FIRST */
+
 *{
     padding: 0px;
     margin: 0px;
@@ -6,7 +8,7 @@
 
 /* HEADER */
 
-header{
+header {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -15,7 +17,77 @@ header{
     height: 50px;
 }
 
-header h1{
+header h1 {
     padding-left: 5px;
+    font-size: 20px;
+}
+
+/* NAVIGATION */
+
+nav {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(200,100,100);
+}
+
+nav ul {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+}
+
+nav ul li {
+    height: 70px;
+}
+
+nav ul li a{
+    display: block;
+    height: 70px;
+}
+
+nav ul li .hide {
+    display: none;
+}
+
+nav img {
+    padding: 20px;
+}
+
+nav img:hover {
+    background-color: #a52a2a;
+}
+
+/* MAIN CONTAINER */
+
+#MainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+#MainContainer h1 {
+    color: #a52a2a;
+    font-size: 25px;
+    padding: 0px;
+}
+
+/* CONTAINER */
+
+.container {
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #a52a2a;
+    margin: 10px;
+}
+
+.container h2 {
+    background-color: #a52a2a;
+    color: white;
     font-size: 20px;
 }

@@ -2,7 +2,7 @@
 
     #Activar rewrite
     RewriteEngine on
-    ErrorDocument 404 http://localhost/CURSO-VRW/shop/error/
+    ErrorDocument 404 http://localhost/WEB-FINAL-DAW/ForoCarros/error/
 
     RewriteCond %{SCRIPT_FILENAME} !-d
     RewriteCond %{SCRIPT_FILENAME} !-f
