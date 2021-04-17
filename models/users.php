@@ -15,6 +15,7 @@
         private $users_profile_photo;
         private $users_profile_visits_counter;
         private $users_rol;
+        private $db;
 
         public function __construct() {
             $this->db = Database::connect();
@@ -122,6 +123,21 @@
 
         function getUsers_rol() {
             return $this->users_rol;
+        }
+
+        public function save() {
+
+            $result = false;
+
+            $sql = "insert into users (users_name, users_password, users_email, users_birth_date, users_registration_date,  users_last_connection_date, users_rol) values ('{$this->users_name}', '{$this->users_password}', '{$this->users_email}', '{$this->users_birth_date}', '{$this->users_registration_date}', '{$this->users_last_connection_date}', 'admin')";
+            $save = $this->db->query($sql);
+
+            if ($save) {
+                $result = true;
+            }
+
+            return $result;
+
         }
 
     }

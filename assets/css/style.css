@@ -25,7 +25,7 @@ header h1 {
 /* NAVIGATION */
 
 nav {
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     width: 100%;
     display: flex;
@@ -83,11 +83,90 @@ nav img:hover {
     box-sizing: border-box;
     width: 100%;
     border: 1px solid #a52a2a;
-    margin: 10px;
+    margin: 0px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .container h2 {
     background-color: #a52a2a;
     color: white;
     font-size: 20px;
+}
+
+/* REGISTRATION */
+
+.container table {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.container table td {
+    padding: 10px;
+    width: 50%;
+}
+
+.container input {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.container hr{
+    margin: 10px;
+}
+
+.container .note {
+    padding: 10px;
+}
+
+.containerInside {
+    box-sizing: border-box;
+    border: 1px solid #a52a2a;
+    margin: 10px;
+    margin-top: 0px;
+    margin-bottom: 25px;
+    padding: 10px;
+}
+
+.rules {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin: 15px;
+}
+
+.rules input {
+    width: auto;
+    margin: 5px;
+}
+
+.button {
+    background-color: #a52a2a;
+    color: white;
+    padding: 10px;
+    font-size: 15px;
+    border: 5px solid #a52a2a;
+}
+
+.button:hover {
+    transition: 0.5s;
+    cursor: pointer;
+    border: 5px solid black;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#buttons .button {
+    width: 45%;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    margin-bottom: 80px;
 }
