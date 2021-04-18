@@ -125,6 +125,33 @@
             return $this->users_rol;
         }
 
+        public function user_name_exist($user_name) {
+
+            $sql = "select users_id from users where users_name = '{$user_name}'";
+
+            $result = $this->db->query($sql);
+            $result = $result->num_rows;
+
+            if ($result >= 1) {
+                return true;
+            } else {
+                return false;
+            }
+            
+        }
+
+        public function scape_characters($data) {
+
+            $result = [];
+
+            foreach ($data as $d) {
+                $result[] = $this->db->real_escape_string($d);
+            }
+
+            return $result;
+
+        }
+
         public function save() {
 
             $result = false;
