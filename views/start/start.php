@@ -2,7 +2,7 @@
 <!-- STYLE -->
 
     <style>
-        #homeIcon {
+        .homeIcon {
             background-color: #a52a2a;
         }
     </style>

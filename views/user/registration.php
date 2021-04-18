@@ -2,7 +2,7 @@
 <!-- STYLE -->
 
     <style>
-        #registrationIcon {
+        .registrationIcon {
             background-color: #a52a2a;
         }
     </style>
@@ -35,7 +35,7 @@
     <h2>Información requerida</h2>
         <table>
             <tr>
-                <td>
+                <td class="izq">
                     <label for="user_name">Nombre de usuario:</label>
                 </td>
                 <td>
@@ -43,7 +43,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="izq">
                     <?php 
                         if (isset($_SESSION["registration"]["error_name"]["empty_name"])) {
                             echo "<p class='err'>" . $_SESSION["registration"]["error_name"]["empty_name"] . "</p>";
@@ -62,11 +62,11 @@
                 <td>
                     <p>Nombre para iniciar sesión en ForoCarros. Con este nombre será el que aparezca en el foro como tu identificador, por lo que es único. Recomendamos usar un nombre ficticio si quieres conservar tu anonimato.</p> 
                     <br>
-                    <p>Tu nombre puede tener como máximo 25 letras</p>
+                    <p>Tu nombre puede tener como máximo 25 letras.</p>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="izq">
                     <label for="user_birth_date">Fecha nacimiento:</label>
                 </td>
                 <td>
@@ -74,7 +74,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="izq">
                     <?php 
                         if (isset($_SESSION["registration"]["younger"])) {
                             echo "<p class='err'>" . $_SESSION["registration"]["younger"] . "</p>";
@@ -89,7 +89,7 @@
             <hr>
             <table>
             <tr>
-                <td>
+                <td class="izq">
                     <label for="user_password">Contraseña:</label>
                 </td>
                 <td>
@@ -97,7 +97,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="izq">
                     <?php
                         if (isset($_SESSION["registration"]["password"]["short"])) {
                             echo "<p class='err'>" . $_SESSION["registration"]["password"]["short"] . "</p>";
@@ -121,7 +121,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="izq">
                     <label for="user_password_repited">Confirmar contraseña:</label>
                 </td>
                 <td>
@@ -132,7 +132,7 @@
             <hr>
             <table>
             <tr>
-                <td>
+                <td class="izq">
                     <label for="user_email">Email:</label>
                 </td>
                 <td>
@@ -140,7 +140,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="izq">
                     <?php
                         if (isset($_SESSION["registration"]["email"]["format"])) {
                             echo "<p class='err'>" . $_SESSION["registration"]["email"]["format"] . "</p>";

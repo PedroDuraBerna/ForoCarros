@@ -11,10 +11,10 @@
 <header><h1>ForoCarros</h1></header>
 <nav>
     <ul>
-        <li><a href="<?=base_url?>"><img id="homeIcon" src="<?=base_url?>assets/img/icons/home.svg" alt="" srcset=""></a><a class="hide" href="<?=base_url?>">Inicio</a></li>
-        <li><a href="<?=base_url?>topics/all"><img id="searchIcon" src="<?=base_url?>assets/img/icons/search.svg" alt="" srcset=""></a><a class="hide" href="<?=base_url?>">Temas</a></li>
-        <li><a href="<?=base_url?>users/login"><img id="loginIcon" src="<?=base_url?>assets/img/icons/login.svg" alt="" srcset=""></a><a class="hide" href="<?=base_url?>">Ingresar</a></li>
-        <li><a href="<?=base_url?>users/registration"><img id="registrationIcon" src="<?=base_url?>assets/img/icons/register.svg" alt="" srcset=""></a><a class="hide" href="<?=base_url?>users/registration">Registrarse</a></li>
+        <li><a class="menuPH" href="<?=base_url?>"><img class="homeIcon" src="<?=base_url?>assets/img/icons/home.svg" alt="" srcset=""></a><a class="menuPC homeIcon" href="<?=base_url?>">Inicio</a></li>
+        <li><a class="menuPH" href="<?=base_url?>topics/all"><img class="searchIcon" src="<?=base_url?>assets/img/icons/search.svg" alt="" srcset=""></a><a class="menuPC searchIcon" href="<?=base_url?>topics/all">Temas</a></li>
+        <li><a class="menuPH" href="<?=base_url?>users/login"><img class="loginIcon" src="<?=base_url?>assets/img/icons/login.svg" alt="" srcset=""></a><a class="menuPC loginIcon" href="<?=base_url?>users/login">Ingresar</a></li>
+        <li><a class="menuPH" href="<?=base_url?>users/registration"><img class="registrationIcon" src="<?=base_url?>assets/img/icons/register.svg" alt="" srcset=""></a><a class="menuPC registrationIcon" href="<?=base_url?>users/registration">Registrarse</a></li>
     </ul>
 </nav>
 <div id="MainContainer">
