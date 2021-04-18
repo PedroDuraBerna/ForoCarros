@@ -140,6 +140,21 @@
             
         }
 
+        public function user_email_exist($user_email) {
+
+            $sql = "select users_id from users where users_email = '{$user_email}'";
+
+            $result = $this->db->query($sql);
+            $result = $result->num_rows;
+
+            if ($result >= 1) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+
         public function scape_characters($data) {
 
             $result = [];
@@ -155,8 +170,8 @@
         public function save() {
 
             $result = false;
-
-            $sql = "insert into users (users_name, users_password, users_email, users_birth_date, users_registration_date,  users_last_connection_date, users_rol) values ('{$this->users_name}', '{$this->users_password}', '{$this->users_email}', '{$this->users_birth_date}', '{$this->users_registration_date}', '{$this->users_last_connection_date}', 'admin')";
+            $users_password = password_hash($this->users_password, PASSWORD_BCRYPT, ["cost" => 4]);
+            $sql = "insert into users (users_name, users_password, users_email, users_birth_date, users_registration_date,  users_last_connection_date, users_rol) values ('{$this->users_name}', '{$users_password}', '{$this->users_email}', '{$this->users_birth_date}', '{$this->users_registration_date}', '{$this->users_last_connection_date}', 'user')";
             $save = $this->db->query($sql);
 
             if ($save) {
