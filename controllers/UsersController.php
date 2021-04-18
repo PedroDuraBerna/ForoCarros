@@ -4,6 +4,10 @@ require_once "models/users.php";
 
 class UsersController {
 
+    public function login() {
+        require_once "views/user/login.php";
+    }
+
     public function registration() {
         require_once "views/user/registration.php";
     }

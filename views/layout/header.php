@@ -12,8 +12,8 @@
 <nav>
     <ul>
         <li><a href="<?=base_url?>"><img id="homeIcon" src="<?=base_url?>assets/img/icons/home.svg" alt="" srcset=""></a><a class="hide" href="<?=base_url?>">Inicio</a></li>
-        <li><a href="<?=base_url?>"><img id="searchIcon" src="<?=base_url?>assets/img/icons/search.svg" alt="" srcset=""></a><a class="hide" href="<?=base_url?>">Temas</a></li>
-        <li><a href="<?=base_url?>"><img id="loginIcon" src="<?=base_url?>assets/img/icons/login.svg" alt="" srcset=""></a><a class="hide" href="<?=base_url?>">Ingresar</a></li>
+        <li><a href="<?=base_url?>topics/all"><img id="searchIcon" src="<?=base_url?>assets/img/icons/search.svg" alt="" srcset=""></a><a class="hide" href="<?=base_url?>">Temas</a></li>
+        <li><a href="<?=base_url?>users/login"><img id="loginIcon" src="<?=base_url?>assets/img/icons/login.svg" alt="" srcset=""></a><a class="hide" href="<?=base_url?>">Ingresar</a></li>
         <li><a href="<?=base_url?>users/registration"><img id="registrationIcon" src="<?=base_url?>assets/img/icons/register.svg" alt="" srcset=""></a><a class="hide" href="<?=base_url?>users/registration">Registrarse</a></li>
     </ul>
 </nav>
