@@ -5,7 +5,31 @@ require_once "models/users.php";
 class UsersController {
 
     public function login() {
+
         require_once "views/user/login.php";
+
+        if (isset($_POST["new_user"])) {
+            header("Location:".base_url."users/registration");
+        } 
+
+        if (isset($_POST["enter"])) {
+
+            $user = new Users;
+            $_POST = $user->scape_characters($_POST);
+            $user->setUsers_name($_POST[0]);
+            $user->setUsers_password($_POST[1]);
+            $err = $user->login();
+
+            if (empty($err)) {
+                $_SESSION["user_information"] = $user->getUser($_POST[0]);
+                header("Location:".base_url."users/login");
+            } else {
+                $_SESSION["login_error"] = $err;
+                header("Location:".base_url."users/login");
+            }
+
+        }
+
     }
 
     public function registration() {

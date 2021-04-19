@@ -125,6 +125,13 @@
             return $this->users_rol;
         }
 
+        public function getUser($user_name) {
+            $sql = "select * from users where users_name = '{$user_name}'";
+            $user = $this->db->query($sql);
+            $user = $user->fetch_object();
+            return $user;
+        }
+
         public function user_name_exist($user_name) {
 
             $sql = "select users_id from users where users_name = '{$user_name}'";
@@ -179,6 +186,31 @@
             }
 
             return $result;
+
+        }
+
+        public function login() {
+
+            $err = [];
+
+            $sql = "select * from users where users_name = '{$this->users_name}'";
+            $login = $this->db->query($sql);
+
+            if ($login && $login->num_rows == 1) {
+
+                $user = $login->fetch_object();
+
+                $verify = password_verify($this->users_password, $user->users_password);
+
+                if (!$verify) {
+                    $err["users_password_failed"] = "El usuario con esta contraseña no existe";
+                }
+
+            } else {
+                $err["user_not_exist"] = "El usuario que has introducido no existe";
+            }
+
+            return $err;
 
         }
 

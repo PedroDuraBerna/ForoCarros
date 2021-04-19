@@ -95,6 +95,25 @@ nav img:hover {
     font-size: 20px;
 }
 
+/* LOGIN BOX */
+
+#loginBox {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+}
+
+.link_login {
+    display: block;
+    color: black;
+    padding: 20px;
+    text-align: center;
+}
+
+.link_login:hover {
+    font-weight: 500;
+}
+
 /* REGISTRATION */
 
 .container table {
@@ -151,13 +170,13 @@ nav img:hover {
     color: white;
     padding: 10px;
     font-size: 15px;
-    border: 5px solid #a52a2a;
+    border: 5px solid #a52a2a !important;
 }
 
 .button:hover {
     transition: 0.5s;
     cursor: pointer;
-    border: 5px solid black;
+    border: 5px solid black !important;
 }
 
 #buttons {
@@ -253,8 +272,18 @@ footer {
     float: right;
 }
 
+.buttons_login {
+    float: none !important;
+    margin: auto;
+}
+
 .container table .izq{
     width: 10%;
+}
+
+#loginBox {
+    width: 500px;
+    margin: auto;
 }
 
 }
