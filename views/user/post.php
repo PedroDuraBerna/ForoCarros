@@ -4,8 +4,4 @@
     }
 </style>
 
-<?php
-
-    echo "POSTEA";
-
-?>
+<h1>Postea en ForoCarros</h1>
