@@ -32,6 +32,18 @@ class UsersController {
 
     }
 
+    public function logout() {
+
+        var_dump($_SESSION);
+
+        if (isset($_POST["logout"])) {
+            Utils::deleteSession("user_information");
+        }
+
+        header("Location:".base_url);
+
+    }
+
     public function registration() {
         require_once "views/user/registration.php";
     }
@@ -96,6 +108,15 @@ class UsersController {
 
         header("Location:".base_url."users/registration");
 
+    }
+
+    public function myprofile() {
+
+        require_once "views/user/myprofile.php";
+    }
+
+    public function post() {
+        require_once "views/user/post.php";
     }
 
 }
