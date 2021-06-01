@@ -4,25 +4,152 @@
     }
 </style>
 
+<?php
+$user = new Users;
+$user = $_SESSION["user_information"];
+?>
+
 <h1>Perfil de usuario</h1>
 <div id="buttonConfig">
-    <button><img src="<?=base_url?>assets/img/icons/profile.svg" alt="" srcset=""></button><button style='background-color:rgb(200,100,100); border-color:rgb(200,100,100);'><img src="<?=base_url?>assets/img/icons/gear.svg" alt="" srcset=""></button>
+    <button><img src="<?= base_url ?>assets/img/icons/profile.svg" alt="" srcset=""></button>
+    <button style='background-color:rgb(200,100,100); border-color:rgb(200,100,100);'><img src="<?= base_url ?>assets/img/icons/gear.svg" alt="" srcset=""></button>
 </div>
 <div class="container">
     <h2>Información del usuario</h2>
-    <p>asdf</p>
-    <p>asdf</p>
-    <p>asdf</p>
-    <p>asdf</p>
-    <p>asdf</p>
-    <p>asdf</p>
+    <div class="user_photo">
+        <?php if (is_null($user->users_profile_photo)) { ?>
+            <img src="<?= base_url ?>assets/img/icons/profile.svg" alt="" srcset="">
+        <?php
+        } else {
+        }
+        ?>
+        <p><a class="button" href="">Cambiar</a></p>
+    </div>
+    <table class="user_table">
+        <tr>
+            <td>
+                <p class="infoUser"><b>Nombre de usuario: </b></p>
+            </td>
+            <td>
+                <p class="infoUser"><?php echo $user->users_name ?></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="infoUser"><b>Correo: </b><button class="change" onclick="insertFormEmail('text_email','input_email')"><img src="<?= base_url ?>assets/img/icons/edit.svg" alt="" srcset=""></button></p>
+            </td>
+            <td>
+                <p id="text_email" class="infoUser"><?php echo $user->users_email ?></p>
+                <form action="" method="post" id="input_email" class="hide">
+                    <input type="text" name="" value="<?php echo $user->users_email ?>">
+                    <input type="submit" value="Cambiar">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="infoUser"><b>Fecha de nacimiento: </b></p>
+            </td>
+            <td>
+                <p class="infoUser"><?php echo $user->users_birth_date ?></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="infoUser"><b>Registro: </b></p>
+            </td>
+            <td>
+                <p class="infoUser"><?php echo $user->users_registration_date ?></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="infoUser"><b>Última conexión: </b></p>
+            </td>
+            <td>
+                <p class="infoUser"><?php echo $user->users_last_connection_date ?></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="infoUser"><b>Estatus: </b></p>
+            </td>
+            <td>
+                <p class="infoUser"><?php echo $user->users_rol ?></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="infoUser"><b>Enlace a perfíl público: </b></p>
+            </td>
+            <td>
+                <p class="infoUser"></p>
+            </td>
+        </tr>
+    </table>
     <h2>Conóceme</h2>
-    <p>asdf</p>
-    <p>asdf</p>
-    <p>asdf</p>
-    <p>asdf</p>
+    <table class="user_table">
+        <tr>
+            <td>
+                <p class="infoUser"><b>Intereses: </b><button class="change" onclick="insertFormInterests('text_interest','input_interests')"><img src="<?= base_url ?>assets/img/icons/edit.svg" alt="" srcset=""></button></p>
+            </td>
+            <td><?php echo $user->users_interests ?>
+                <form action="" method="post" id="input_interests" class="hide">
+                    <input type="text" name="" value="<?php echo $user->users_interests ?>">
+                    <input type="submit" value="Cambiar">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="infoUser"><b>Biografía: </b><button class="change" onclick="insertFormBio('text_bio','input_bio')"><img src="<?= base_url ?>assets/img/icons/edit.svg" alt="" srcset=""></button></p>
+            </td>
+            <td><?php echo $user->users_bio ?>
+                <form action="" method="post" id="input_bio" class="hide">
+                    <textarea style="resize: none;" cols="40" rows="10" name=""> <?php echo $user->users_bio ?></textarea>
+                    <input type="submit" value="Cambiar">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="infoUser"><b>Firma: </b><button class="change" onclick="insertFormSign('text_sign','input_sign')"><img src="<?= base_url ?>assets/img/icons/edit.svg" alt="" srcset=""></button></p>
+            </td>
+            <td><?php echo $user->users_sign ?>
+                <form action="" method="post" id="input_sign" class="hide">
+                    <input type="text" name="" value="<?php echo $user->users_sign ?>">
+                    <input type="submit" value="Cambiar">
+                </form>
+            </td>
+        </tr>
+    </table>
     <h2>Estadísticas</h2>
-    <p>asdf</p>
-    <p>asdf</p>
-    <p>asdf</p>
+    <table class="user_table">
+        <tr>
+            <td>
+                <p class="infoUser"><b>Nº de posts:</b></p>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="infoUser"><b>Nº de mensajes escritos:</b></p>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="infoUser"><b>Nº de mensajes recibidos:</b></p>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="infoUser"><b>Nº de likes:</b></p>
+            </td>
+            <td></td>
+        </tr>
+    </table>
 </div>
+
+<script src="<?= base_url ?>assets/js/scriptA.js"></script>
