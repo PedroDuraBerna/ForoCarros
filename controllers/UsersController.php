@@ -1,6 +1,8 @@
 <?php
 
 require_once "models/users.php";
+require_once "models/topics.php";
+require_once "models/posts.php";
 
 class UsersController {
 
@@ -46,6 +48,16 @@ class UsersController {
 
     public function registration() {
         require_once "views/user/registration.php";
+    }
+
+    public function ViewPost($posts_id) {
+
+        $p = new Posts;
+
+        $result = $p->getPosts_by_id($posts_id);
+
+        var_dump($result);
+
     }
 
     public function save() {
@@ -111,14 +123,144 @@ class UsersController {
     }
 
     public function myprofile() {
-
         require_once "views/user/myprofile.php";
     }
 
     public function post() {
+        
+        $count = 0;
+        $topics = [];
+        $topic = new Topics;
+        $result = $topic->getAll_Topics();
+
+        while ($obj = $result->fetch_object()) {
+            $topics[$count]["Name"] = $obj->topics_name;
+            $count++;
+        }
+
+        $err = [];
+
+        if (isset($_POST["title"])) {
+            if ($_POST["title"] == "") {
+                $err["title"] = "Has de introducir el título";
+            }
+        }
+
+        if (isset($_POST["text"])) {
+            if ($_POST["text"] == "") {
+                $err["text"] = "Has de escribir algo";
+            }
+        }
+        
+
+        if (empty($err) && isset($_POST["Topic"])) {
+
+            $post = new Posts;
+            $topic = new Topics;
+            $p = $_SESSION["user_information"];
+
+            $today = getdate();
+            $date = $today["year"] . "-" . $today["mon"] . "-" . $today["mday"] . " " . $today["hours"] . ":" . $today["minutes"] . ":" . $today["seconds"]; 
+
+            $post->setPosts_title($_POST["title"]);
+            $post->setPosts_text($_POST["text"]);
+            $post->setPosts_date($date);
+            $post->setPosts_last_modification_date($date);
+            $post->setPosts_visits_counter(0);
+            $post->setPosts_users_id($p->users_id);
+            $post->setPosts_topics_id($topic->getTopics_id_by_name($_POST["Topic"]));
+
+            $post->insert_post();
+
+            header("Location:" . base_url . "users/post");   
+
+        }
+
         require_once "views/user/post.php";
+
+    }
+
+    public function change_email() {
+
+        $user = new Users;
+        $email = $_POST["email"];
+        $err = [];
+
+        if (!(false !== filter_var($email, FILTER_VALIDATE_EMAIL))) {
+            $err["change"] = "Formato de correo electrónico incorrecto";
+        }
+
+        if ($user->user_email_exist($email)) {
+            $err["change"] = "Este email ya existe";
+        }
+
+        if (empty($err)) {
+            $user->change_email($email);
+        }
+
+        require_once "views/user/myprofile.php";
+    }
+
+    public function change_interests() {
+
+        $user = new Users;
+        $interests = $_POST["interests"];
+        $err = [];
+
+        if (strlen($interests) > 900) {
+            $err["change"] = "Has superado los 900 carácteres, introduce menos";
+        }
+
+        if (empty($err)) {
+            $user->change_interests($interests);
+        }
+
+        require_once "views/user/myprofile.php";
+
+    }
+
+    public function change_bio() {
+
+        $user = new Users;
+        $bio = $_POST["bio"];
+        $err = [];
+
+        if (strlen($bio) > 900) {
+            $err["change"] = "Has superado los 900 carácteres, introduce menos";
+        }
+
+        if (empty($err)) {
+            $user->change_bio($bio);
+        }
+
+        require_once "views/user/myprofile.php";
+
+    }
+
+    public function change_sign() {
+
+        $user = new Users;
+        $sign = $_POST["sign"];
+        $err = [];
+
+        if (strlen($sign) > 200) {
+            $err["change"] = "Has superado los 200 carácteres, introduce menos";
+        }
+
+        if (empty($err)) {
+            $user->change_sign($sign);
+        }
+
+        require_once "views/user/myprofile.php";
+
+    }
+
+    public function getPost_by_id($posts_id) {
+
+        $p = new Posts;
+        $result = $p->getPosts_by_id($posts_id);
+        return $result;
+
     }
 
 }
-
-?>

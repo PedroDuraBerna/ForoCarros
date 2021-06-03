@@ -132,6 +132,14 @@
             return $user;
         }
 
+        public function getUser_name_by_id($id) {
+            $sql = "select users_name from users where users_id = '{$id}'";
+            $user = $this->db->query($sql);
+            $user = $user->fetch_object();
+            $user_name = $user->users_name;
+            return $user_name;
+        }
+
         public function user_name_exist($user_name) {
 
             $sql = "select users_id from users where users_name = '{$user_name}'";
@@ -159,6 +167,70 @@
             } else {
                 return false;
             }
+
+        }
+
+        public function change_email($email) {
+
+            $u = $_SESSION["user_information"];
+
+            $sql = "update users set users_email = '{$email}' where users_name = '{$u->users_name}'";
+
+            $this->db->query($sql);
+
+            $u->users_email = $email;
+
+            $_SESSION["user_information"] = $u;
+
+            $_SESSION["correct_change"] = "Correo cambiado correctamente";
+
+        }
+
+        public function change_interests($interests) {
+
+            $u = $_SESSION["user_information"];
+
+            $sql = "update users set users_interests = '{$interests}' where users_name = '{$u->users_name}'";
+
+            $this->db->query($sql);
+
+            $u->users_interests = $interests;
+
+            $_SESSION["user_information"] = $u;
+
+            $_SESSION["correct_change"] = "Intereses cambiados correctamente";
+
+        }
+
+        public function change_bio($bio) {
+
+            $u = $_SESSION["user_information"];
+
+            $sql = "update users set users_bio = '{$bio}' where users_name = '{$u->users_name}'";
+
+            $this->db->query($sql);
+
+            $u->users_bio = $bio;
+
+            $_SESSION["user_information"] = $u;
+
+            $_SESSION["correct_change"] = "Biografía cambiada correctamente";
+
+        }
+
+        public function change_sign($sign) {
+
+            $u = $_SESSION["user_information"];
+
+            $sql = "update users set users_sign = '{$sign}' where users_name = '{$u->users_name}'";
+
+            $this->db->query($sql);
+
+            $u->users_sign = $sign;
+
+            $_SESSION["user_information"] = $u;
+
+            $_SESSION["correct_change"] = "Firma cambiada correctamente";
 
         }
 

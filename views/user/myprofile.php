@@ -14,6 +14,26 @@ $user = $_SESSION["user_information"];
     <button><img src="<?= base_url ?>assets/img/icons/profile.svg" alt="" srcset=""></button>
     <button style='background-color:rgb(200,100,100); border-color:rgb(200,100,100);'><img src="<?= base_url ?>assets/img/icons/gear.svg" alt="" srcset=""></button>
 </div>
+
+<?php 
+
+    if (!empty($err)) {
+        echo "<div class='container'>";
+        echo "<h2>Error</h2>";
+        echo "<p class='err'>".$err["change"]."</p>";
+        echo "</div>";
+    }
+
+    if (isset($_SESSION["correct_change"])) {
+        echo "<div class='container'>";
+        echo "<h2>Cambio realizado correctamente</h2>";
+        echo "<p class='ok'>".$_SESSION["correct_change"]."</p>";
+        echo "</div>";
+        unset($_SESSION["correct_change"]);
+    }
+
+?> 
+
 <div class="container">
     <h2>Información del usuario</h2>
     <div class="user_photo">
@@ -40,8 +60,8 @@ $user = $_SESSION["user_information"];
             </td>
             <td>
                 <p id="text_email" class="infoUser"><?php echo $user->users_email ?></p>
-                <form action="" method="post" id="input_email" class="hide">
-                    <input type="text" name="" value="<?php echo $user->users_email ?>">
+                <form action="<?=base_url?>users/change_email" method="post" id="input_email" class="hide">
+                    <input type="text" name="email" value="<?php echo $user->users_email ?>">
                     <input type="submit" value="Cambiar">
                 </form>
             </td>
@@ -94,8 +114,8 @@ $user = $_SESSION["user_information"];
                 <p class="infoUser"><b>Intereses: </b><button class="change" onclick="insertFormInterests('text_interest','input_interests')"><img src="<?= base_url ?>assets/img/icons/edit.svg" alt="" srcset=""></button></p>
             </td>
             <td><?php echo $user->users_interests ?>
-                <form action="" method="post" id="input_interests" class="hide">
-                    <input type="text" name="" value="<?php echo $user->users_interests ?>">
+                <form action="<?=base_url?>users/change_interests" method="post" id="input_interests" class="hide">
+                    <input type="text" name="interests" value="<?php echo $user->users_interests ?>">
                     <input type="submit" value="Cambiar">
                 </form>
             </td>
@@ -105,8 +125,8 @@ $user = $_SESSION["user_information"];
                 <p class="infoUser"><b>Biografía: </b><button class="change" onclick="insertFormBio('text_bio','input_bio')"><img src="<?= base_url ?>assets/img/icons/edit.svg" alt="" srcset=""></button></p>
             </td>
             <td><?php echo $user->users_bio ?>
-                <form action="" method="post" id="input_bio" class="hide">
-                    <textarea style="resize: none;" cols="40" rows="10" name=""> <?php echo $user->users_bio ?></textarea>
+                <form action="<?=base_url?>users/change_bio" method="post" id="input_bio" class="hide">
+                    <textarea style="resize: none;" cols="40" rows="10" name="bio"> <?php echo $user->users_bio ?></textarea>
                     <input type="submit" value="Cambiar">
                 </form>
             </td>
@@ -116,8 +136,8 @@ $user = $_SESSION["user_information"];
                 <p class="infoUser"><b>Firma: </b><button class="change" onclick="insertFormSign('text_sign','input_sign')"><img src="<?= base_url ?>assets/img/icons/edit.svg" alt="" srcset=""></button></p>
             </td>
             <td><?php echo $user->users_sign ?>
-                <form action="" method="post" id="input_sign" class="hide">
-                    <input type="text" name="" value="<?php echo $user->users_sign ?>">
+                <form action="<?=base_url?>users/change_sign" method="post" id="input_sign" class="hide">
+                    <input type="text" name="sign" value="<?php echo $user->users_sign ?>">
                     <input type="submit" value="Cambiar">
                 </form>
             </td>

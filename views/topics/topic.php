@@ -1,45 +1,34 @@
 
 <?php
-    if (isset($_POST["pagina"])) {
-        $_SESSION["pagina"] = $_POST["pagina"];
-        header ("Location:" . base_url);
-    }
-
-?>
-
-<!-- STYLE -->
-
-    <style>
-        .homeIcon {
-            background-color: #a52a2a;
-        }
-    </style>
-
-<?php
     echo "<style>";
-    echo "#pag" . $_SESSION["pagina"] . " {";
+    echo "#pag" . $_SESSION["pagina_topic"] . " {";
     echo "background-color: #a52a2a !important;";
     echo "color: white;";
     echo "}";
     echo "</style>";
 ?>
 
+<?php 
+    if (isset($_POST["pagina"])) {
+        $_SESSION["pagina_topic"] = $_POST["pagina"];
+        header ("Location:" . base_url . "topics/$info");
+    }
+?>
 
+<h1>Tema: <?php echo $info ?></h1>
 
-<!-- STYLE -->
-
-<h1>Bienvenido a ForoCarros</h1>
 <div id="pagination">
     <?php
-        for ($i = 0; $i < $_SESSION["numero_paginas"]; $i++) {
-            echo "<form action=" . $_SERVER["PHP_SELF"] . " method='post'>";
+        for ($i = 0; $i < $_SESSION["numero_paginas_topic"]; $i++) {
+            echo "<form action=" . base_url . "topics/$info method='post'>";
             echo "<input type='submit' value=".($i+1)." name='pagina' class='pag' id='pag".($i+1)."'>";
             echo "</form>";
         }
     ?>
 </div> 
+
 <div class="container">
-    <h2>Últimos 10 posts</h2>
+    <h2>Últimos 10 Posts</h2>
 
         <div id="start_bar">
             <span class='bar_1'>Tema</span>
@@ -53,7 +42,7 @@
     <?php 
 
     for ($i = 0; $i < count($All_Posts); $i++) {
-        echo "<form onclick='redirigir_post(\"" . $All_Posts[$i]["posts_id"] . "\")' action='Post/view' method='post'>";
+        echo "<form onclick='redirigir_post(\"" . $All_Posts[$i]["posts_id"] . "\")' action='" . base_url . "Post/view' method='post'>";
         echo "<div class='row_post'>";
         echo "<span class='bar_1'><img src='" . base_url . "assets/img/topics/" . $All_Posts[$i]["topics_name"] . ".jpg'  title='" . $All_Posts[$i]["topics_name"] . "' alt='" . $All_Posts[$i]["topics_name"] . "' srcset=''></span>";
         echo "<span class='bar_2'>" . $All_Posts[$i]["posts_last_modification_date"] . "</span>";
@@ -66,24 +55,19 @@
         echo "</div>";
         echo "</form>";
     }
-    
-    ?>  
+
+    ?>
 
 </div>
+
 <div id="pagination">
     <?php
-        for ($i = 0; $i < $_SESSION["numero_paginas"]; $i++) {
+        for ($i = 0; $i < $_SESSION["numero_paginas_topic"]; $i++) {
             echo "<form action=" . $_SERVER["PHP_SELF"] . " method='post'>";
             echo "<input type='submit' value=".($i+1)." name='pagina' class='pag' id='pag".($i+1)."'>";
             echo "</form>";
         }
     ?>
-</div>  
-<div class="container">
-    <h2>Estadísticas</h2>
-</div>
-<div class="container">
-    <h2>Regístrate</h2>
-</div>
+</div> 
 
 <script src="<?= base_url ?>assets/js/scriptB.js"></script>

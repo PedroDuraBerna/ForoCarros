@@ -95,6 +95,10 @@ nav img:hover {
     font-size: 20px;
 }
 
+.paragraph {
+    padding: 20px;
+}
+
 /* MY PROFILE */
 
 #buttonConfig {
@@ -168,6 +172,74 @@ button:hover {
     border-radius: 100%;
     padding: 0px;
     padding-top: 2px;
+}
+
+/* START */
+
+.row_post {
+    border: 1px solid #a52a2a;
+    display: flex;
+    flex-direction: row;
+    color: black;
+}
+
+#start_bar {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    background-color: rgb(200,100,100);
+}
+
+.bar_1, .bar_2, .bar_3, .bar_4, .bar_5, .bar_6 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.bar_1 {
+    width: 15%;
+}
+
+.bar_2 {
+    width: 15%;
+}
+
+.bar_3 {
+    width: 40%;
+}
+
+.bar_4 {
+    width: 10%;
+}
+
+.bar_5 {
+    width: 10%;
+}
+
+.bar_6 {
+    width: 10%;
+}
+
+.row_post img {
+    width: 50px;
+}
+
+.row_post:hover {
+    transition: 0.5s;
+    color: white;
+    background-color: #a52a2a;
+}
+
+#pagination {
+    display: flex;
+    width: 100%;
+}
+
+.pag {
+    width: 20px !important;
+    color: #a52a2a;
+    background-color: white;
+    border-color: #a52a2a;
 }
 
 /* LOGIN BOX */
@@ -247,6 +319,16 @@ button:hover {
     padding: 10px;
 }
 
+.container textarea {
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 90%;
+    margin-left: 5%;
+    resize: none;
+}
+
 .rules {
     display: flex;
     align-items: center;
@@ -291,6 +373,75 @@ button:hover {
 .ok {
     padding: 10px;
     color: green;
+}
+
+/* Topics */
+
+#topics_select, #topics_title, #topics_text {
+    margin: 20px;
+}
+
+#topics_title {
+    width: 70%;
+    border: 2px solid #a52a2a;
+}
+
+#topics_text {
+    padding: 10px;
+    box-sizing: border-box;
+    width: 70%;
+    height: 400px;
+    resize: none;
+}
+
+.topic_p {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #a52a2a;
+    padding-left: 10px;
+}
+
+.topic_a {
+    text-decoration: none;
+    color: #a52a2a;
+}
+
+.topic_a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.topic_p img {
+    width: 50px;
+}
+
+.topic_p:hover {
+    transition: 0.5s;
+    background-color: #a52a2a;
+}
+
+/* POST */
+
+.post_info {
+    display: flex;
+    padding: 20px;
+}
+
+.post_data {
+    border: 1px solid #a52a2a;
+    width: 100%;
+    padding: 10px;
+}
+
+.post_data p {
+    margin-bottom: 10px;
+}
+
+.post_topics_name {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 30px;
 }
 
 /* FOOTER */
@@ -359,6 +510,30 @@ footer {
     width: 700px !important;
 }
 
+.bar_1 {
+    width: 10%;
+}
+
+.bar_2 {
+    width: 10%;
+}
+
+.bar_3 {
+    width: 30%;
+}
+
+.bar_4 {
+    width: 20%;
+}
+
+.bar_5 {
+    width: 20%;
+}
+
+.bar_6 {
+    width: 10%;
+}
+
 }
 
 @media (min-width: 1024px) {
@@ -388,6 +563,30 @@ footer {
 #loginBox {
     width: 500px;
     margin: auto;
+}
+
+.bar_1 {
+    width: 15%;
+}
+
+.bar_2 {
+    width: 15%;
+}
+
+.bar_3 {
+    width: 40%;
+}
+
+.bar_4 {
+    width: 10%;
+}
+
+.bar_5 {
+    width: 10%;
+}
+
+.bar_6 {
+    width: 10%;
 }
 
 }
