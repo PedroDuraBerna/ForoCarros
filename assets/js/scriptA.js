@@ -74,3 +74,17 @@ function insertFormSign() {
     }
 
 }
+
+function insertFormPhoto() {
+
+    var input = document.getElementById("input_users_photo");
+
+    edit_sign = !edit_sign;
+
+    if(edit_sign) {
+        input.style.display = "block";
+    } else {
+        input.style.display = "none";
+    }
+
+}

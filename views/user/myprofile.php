@@ -11,8 +11,13 @@ $user = $_SESSION["user_information"];
 
 <h1>Perfil de usuario</h1>
 <div id="buttonConfig">
-    <button><img src="<?= base_url ?>assets/img/icons/profile.svg" alt="" srcset=""></button>
-    <button style='background-color:rgb(200,100,100); border-color:rgb(200,100,100);'><img src="<?= base_url ?>assets/img/icons/gear.svg" alt="" srcset=""></button>
+    <a href="<?= base_url ?>index.php?controllers=users&action=myprofile" class="button"><img src="<?= base_url ?>assets/img/icons/profile.svg" alt="" srcset=""></a>
+    <?php if ($user["users_rol"] == "admin"){
+    ?>
+            <a href="<?= base_url ?>index.php?controllers=users&action=adminConfiguration" class="button" style='background-color:rgb(200,100,100); border-color:rgb(200,100,100);'><img src="<?= base_url ?>assets/img/icons/gear.svg" alt="" srcset=""></a>
+    <?php
+        } 
+    ?>
 </div>
 
 <?php 
@@ -41,10 +46,17 @@ $user = $_SESSION["user_information"];
             <img src="<?= base_url ?>assets/img/icons/profile.svg" alt="" srcset="">
         <?php
         } else {
+            ?>
+            <img src="<?= base_url ?>assets/img/profile_picks/<?php echo $user["users_profile_photo"] ?>" alt="" srcset="">
+            <?php
         }
         ?>
-        <p><a class="button" href="">Cambiar</a></p>
-    </div>
+        <form action="<?=base_url?>index.php?controllers=users&action=change_users_photo" method="post" id="input_users_photo" class="hide" enctype="multipart/form-data">
+            <input type="file" name="photo" id='photo' class='input_change'>
+            <input type="submit" name="change_photo" value="Cambiar" class='button_change'>
+        </form>
+        </div>
+        <p class='mid'><button class="change" onclick="insertFormPhoto('input_users_photo')"><img src="<?= base_url ?>assets/img/icons/edit.svg" alt="" srcset=""></button></p> 
     <table class="user_table">
         <tr>
             <td>
@@ -61,8 +73,8 @@ $user = $_SESSION["user_information"];
             <td>
                 <p id="text_email" class="infoUser"><?php echo $user["users_email"] ?></p>
                 <form action="<?=base_url?>index.php?controllers=users&action=change_email" method="post" id="input_email" class="hide">
-                    <input type="text" name="email" value="<?php echo $user["users_email"] ?>">
-                    <input type="submit" value="Cambiar">
+                    <input type="text" name="email" value="<?php echo $user["users_email"] ?> class='input_change'">
+                    <input type="submit" value="Cambiar" class='button_change'>
                 </form>
             </td>
         </tr>
@@ -95,7 +107,17 @@ $user = $_SESSION["user_information"];
                 <p class="infoUser"><b>Estatus: </b></p>
             </td>
             <td>
-                <p class="infoUser"><?php echo $user["users_rol"] ?></p>
+                <?php 
+                
+                    if ($user["users_rol"] == "admin") {
+                        echo "<p class='infoUser err'>" . $user["users_rol"] . "</p>";
+                    } else if ($user["users_rol"] == "moderador") {
+                        echo "<p class='infoUser' style='color:orange;'>" . $user["users_rol"] . "</p>";
+                    } else {
+                        echo "<p class='infoUser' style='color:green;'>" . $user["users_rol"] . "</p>";
+                    }
+                
+                ?>
             </td>
         </tr>
         <tr>
@@ -115,8 +137,8 @@ $user = $_SESSION["user_information"];
             </td>
             <td><?php echo $user["users_interests"] ?>
                 <form action="<?=base_url?>index.php?controllers=users&action=change_interests" method="post" id="input_interests" class="hide">
-                    <input type="text" name="interests" value="<?php echo $user["users_interests"] ?>">
-                    <input type="submit" value="Cambiar">
+                    <input type="text" name="interests" value='<?php echo $user["users_interests"] ?>' class='input_change'">
+                    <input type="submit" value="Cambiar" class='button_change'>
                 </form>
             </td>
         </tr>
@@ -127,7 +149,7 @@ $user = $_SESSION["user_information"];
             <td><?php echo $user["users_bio"] ?>
                 <form action="<?=base_url?>index.php?controllers=users&action=change_bio" method="post" id="input_bio" class="hide">
                     <textarea style="resize: none;" cols="40" rows="10" name="bio"> <?php echo $user["users_bio"] ?></textarea>
-                    <input type="submit" value="Cambiar">
+                    <input type="submit" value="Cambiar" class='button_change'>
                 </form>
             </td>
         </tr>
@@ -137,8 +159,8 @@ $user = $_SESSION["user_information"];
             </td>
             <td><?php echo $user["users_sign"] ?>
                 <form action="<?=base_url?>index.php?controllers=users&action=change_sign" method="post" id="input_sign" class="hide">
-                    <input type="text" name="sign" value="<?php echo $user["users_sign"] ?>">
-                    <input type="submit" value="Cambiar">
+                    <input type="text" name="sign" value='<?php echo $user["users_sign"] ?>' class='input_change'">
+                    <input type="submit" value="Cambiar" class='button_change'>
                 </form>
             </td>
         </tr>

@@ -3,6 +3,7 @@
 require_once "models/users.php";
 require_once "models/topics.php";
 require_once "models/posts.php";
+require_once "models/comments.php";
 
 class UsersController {
 
@@ -177,6 +178,35 @@ class UsersController {
 
     }
 
+    public function comment() {
+
+        if (isset($_POST["comment"])) {
+
+            $err = [];
+
+            $comments_text = $_POST["post_comment"];
+            $comments_date = date('Y-m-d h:m:s');
+            $posts_id = $_POST["posts_id"];
+            $users_id = $_SESSION["user_information"]["users_id"];
+
+            if ($_POST["post_comment"] == "" || $_POST["post_comment"] == " ") {
+                $err["void_comment"] = "No hay nada excrito en el comentario";
+            }
+
+            if (empty($err)) {
+
+                $c = new Comments;
+
+                echo $c->insert_comment($comments_text, $comments_date, $posts_id, $users_id);
+
+                header("Location:" . base_url . "index.php?controllers=post&action=view&id=" . $posts_id);
+                
+            }
+
+        }
+
+    }
+
     public function change_email() {
 
         $user = new Users;
@@ -250,6 +280,57 @@ class UsersController {
 
         require_once "views/user/myprofile.php";
 
+    }
+
+    public function change_users_photo() {
+
+        if (isset($_POST["change_photo"])) {
+
+            $file = $_FILES['photo'];
+            $err = [];
+            $u = new Users;
+
+            if (isset($file) && $file != "") {
+                $name = time() . $file["name"];
+                $type = $file["type"];
+                $tmp_name = $file["tmp_name"];
+                $size = $file["size"];
+
+                if (!((strpos($type, "gif") || strpos($type, "jpeg") || strpos($type, "jpg") || strpos($type, "png")) && ($size < 2000000))) {
+                    $err["change"] = 'Error. La extensión o el tamaño de los archivos no es correcta.
+                    Se permiten archivos .gif, .jpg, .png. y de 200 kb como máximo.';
+                } else {
+
+                    $path = "assets/img/profile_picks/";
+
+                    if (isset($_SESSION["user_information"])) {
+                        if ($_SESSION["user_information"] != null) {
+                            unlink($path . $_SESSION["user_information"]["users_profile_photo"]);
+                            $_SESSION["user_information"]["users_profile_photo"] = $name;
+                        }
+
+                    }
+
+                    if (move_uploaded_file($tmp_name, $path . $name)) {
+                        chmod($path . $name, 0777);
+                        $u->change_users_profile_photo($name);
+                    } else {
+                        $err["change"] = "Ocurrió algún error al subir la imagen al servidor. No se ha podido guardar.";
+                    }
+
+                }
+
+            }
+
+            require_once "views/user/myprofile.php";
+
+        }
+
+    }
+
+    public function public_profile() {
+        //codigo para obtener la info publica a ver del usuario
+        require_once "views/user/publicprofile.php";
     }
 
     public function getPost_by_id($posts_id) {

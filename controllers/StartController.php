@@ -34,9 +34,6 @@ class StartController {
 
         $result2 = $posts->getAll_Posts_Paginated($empezar_desde, $filas_por_pagina);
         
-        //var_dump($result2->fetch_assoc());
-        //var_dump($result2->fetch_assoc());
-        
         $All_Posts = [];
         $count = 0;
  

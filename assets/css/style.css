@@ -99,6 +99,20 @@ nav img:hover {
     padding: 20px;
 }
 
+/* ROL */
+
+.admin {
+    color: red;
+}
+
+.user {
+    color: green;
+}
+
+.moderator {
+    color: orange;
+}
+
 /* MY PROFILE */
 
 #buttonConfig {
@@ -152,11 +166,15 @@ button:hover {
     align-items: center;
 }
 
+.user_photo input {
+    margin-bottom: 30px;
+}
+
 .user_photo img {
-    margin: 20px;
+    margin-top: 30px;
     margin-bottom: 30px;
     padding: 10px;
-    border: 3px solid black;
+    /*border: 3px solid black;*/
     border-radius: 100%;
     width: 100px;
     background-color: #a52a2a;
@@ -172,6 +190,30 @@ button:hover {
     border-radius: 100%;
     padding: 0px;
     padding-top: 2px;
+}
+
+.mid {
+    display: flex;
+    justify-content: center;
+}
+
+.mid button {
+    margin-right: 0px !important;
+}
+
+.input_change {
+    width: 100% !important;
+}
+
+.button_change {
+    color: white;
+    background-color: #a52a2a;
+    border: 3px solid #a52a2a !important;
+    width: 100px !important;
+}
+
+.button_change:hover {
+    border-color: black !important;
 }
 
 /* START */
@@ -439,6 +481,37 @@ button:hover {
     padding: 20px;
 }
 
+.post_info a {
+    display: block;
+    text-align: center;
+    background-color: #a52a2a;
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    border: 3px solid #a52a2a;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 0px;
+}
+
+.post_info a:hover {
+    transition: 0.5s;
+    border: 3px solid black;
+}
+
+.post_info img{
+    width: 100px;
+    height: 100px;
+    background-color: #a52a2a;
+    border-top: 1px solid #a52a2a;
+    border-left: 1px solid #a52a2a;
+    border-bottom: 1px solid #a52a2a;
+}
+
+.post_info div:first-child {
+    width: 100px;
+}
+
 .post_data {
     border: 1px solid #a52a2a;
     width: 100%;
@@ -453,6 +526,27 @@ button:hover {
     text-align: center;
     padding-top: 20px;
     font-size: 30px;
+}
+
+.buttons_post {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.button_post {
+    margin-bottom: 0px;
+    padding: 5px;
+    background-color: #a52a2a;
+    border: 3px solid #a52a2a !important;
+    color: white;
+    width: 100px !important;
+}
+
+.button_post:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    border: 3px solid black !important;
 }
 
 /* FOOTER */

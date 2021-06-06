@@ -126,13 +126,26 @@
         }
 
         public function getUser($user_name) {
-            
-            $user = [];
-            
             $sql = "select * from users where users_name = '{$user_name}'";
             $result = $this->db->query($sql);
             $fields=mysqli_fetch_array($result);
             return $fields;
+        }
+
+        public function getUsers_profile_photo_by_name($name) {
+            $sql = "select users_profile_photo from users where users_name = '{$name}'";
+            $user = $this->db->query($sql);
+            $user = $user->fetch_object();
+            $this->users_profile_photo = $user->users_profile_photo;
+            return $this->users_profile_photo;
+        }
+
+        public function getUsers_sign_by_name($name) {
+            $sql = "select users_sign from users where users_name = '{$name}'";
+            $user = $this->db->query($sql);
+            $user = $user->fetch_object();
+            $this->users_sign = $user->users_sign;
+            return $this->users_sign;
         }
         
         public function getUser_name_by_id($id) {
@@ -141,6 +154,15 @@
             $user = $user->fetch_object();
             $this->user_name = $user->users_name;
             return $this->user_name;
+        }
+
+        
+        public function getUsers_rol_by_name($users_name) {
+            $sql = "select users_rol from users where users_name = '{$users_name}'";
+            $user = $this->db->query($sql);
+            $user = $user->fetch_object();
+            $this->users_rol = $user->users_rol;
+            return $this->users_rol;
         }
 
         public function user_name_exist($user_name) {
@@ -170,6 +192,22 @@
             } else {
                 return false;
             }
+
+        }
+
+        public function change_users_profile_photo($users_profile_photo) {
+
+            $u = $_SESSION["user_information"];
+
+            $sql = "update users set users_profile_photo = '{$users_profile_photo}' where users_name = '{$u["users_name"]}'";
+
+            $this->db->query($sql);
+
+            $u["users_profile_photo"] = $users_profile_photo;
+
+            $_SESSION["user_information"] = $u;
+
+            $_SESSION["correct_change"] = "Foto cambiada correctamente";
 
         }
 

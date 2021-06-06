@@ -99,8 +99,6 @@
 
         }
 
-        
-
         function getPosts_by_id($posts_id) {
 
             $sql = "select * from posts where posts_id = {$posts_id}";
@@ -137,6 +135,40 @@
             $sql = "Insert into posts (posts_title, posts_text, posts_date, posts_last_modification_date, posts_visits_counter, users_id, topics_id) values ('{$this->posts_title}', '{$this->posts_text}', '{$this->posts_date}', '{$this->posts_last_modification_date}', '{$this->posts_visits_counter}', '{$this->posts_users_id}', '{$this->posts_topics_id}' )";
 
             $this->db->query($sql);
+
+        }
+
+        public function delete_post($post_id) {
+
+            $sql = "delete from posts where posts_id = $post_id";
+
+            $result = $this->db->query($sql);
+
+            return $result;
+
+        }
+
+        public function like_post($users_id, $posts_id) {
+
+            $sql = "insert into liked_posts (users_id, posts_id) values ($users_id, $posts_id)";
+
+            $result = $this->db->query($sql);
+
+            return $result;
+
+        }
+
+        public function chek_liked_post($users_id, $posts_id) {
+
+            $sql = "select * from liked_posts where users_id = $users_id, posts_id = $posts_id";
+
+            $result = $this->db->query($sql);
+
+            return $result;
+
+        }
+
+        public function_delete_liked_post() {
 
         }
 

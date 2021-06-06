@@ -28,9 +28,7 @@ if (isset($_GET["controllers"])) {
             //ACTIONS
             
             if ($_GET["action"] == "login") {
-                
                 $usr = $u->login();
-                
             }
             
             if ($_GET["action"] == "logout") {
@@ -67,6 +65,18 @@ if (isset($_GET["controllers"])) {
 
             if ($_GET["action"] == "change_sign") {
                 $u->change_sign();
+            }
+
+            if ($_GET["action"] == "change_users_photo") {
+                $u->change_users_photo();
+            }
+
+            if ($_GET["action"] == "publicprofile") {
+                $u->public_profile();
+            }
+
+            if ($_GET["action"] == "comment") {
+                $u->comment();
             }
             
         }

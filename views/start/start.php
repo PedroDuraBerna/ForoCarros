@@ -1,12 +1,4 @@
 
-<?php
-    if (isset($_POST["pagina"])) {
-        $_SESSION["pagina"] = $_POST["pagina"];
-        header ("Location:" . base_url);
-    }
-
-?>
-
 <!-- STYLE -->
 
     <style>
@@ -23,8 +15,6 @@
     echo "}";
     echo "</style>";
 ?>
-
-
 
 <!-- STYLE -->
 
