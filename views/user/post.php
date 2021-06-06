@@ -7,7 +7,7 @@
 <h1>Postea en ForoCarros</h1>
 
 <div class="container">
-<form action="<?=base_url?>users/post" method="POST">
+<form action="<?=base_url?>index.php?controllers=users&action=post" method="POST">
 <h2>Elige un tema</h2>
 
 <select name="Topic" id="topics_select">

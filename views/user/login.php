@@ -11,6 +11,7 @@
 <h1>Iniciar sesión en ForoCarros</h1>
 
 <?php
+
 if (isset($_SESSION["login_error"])) {
     echo "<div class='container'>";
     echo "<h2>Error en el inicio de sesión</h2>";
@@ -27,13 +28,14 @@ if (isset($_SESSION["user_information"])) {
     echo "<h2 style='background-color:green; padding:5px; text-align:center;' >Usuario logeado correctamente</h2>";
     echo "<p style='text-align: center; margin-top: 15px'>Redirigiendo en 3 segundos...</p>";
     echo "</div>";
-    header("refresh:3;url=" . base_url . "users/myprofile");
+    header("refresh:3;url=" . base_url . "index.php?controllers=users&action=myprofile");
 }
+
 ?>
 
 <div class="container">
     <h2>Introduce tus datos</h2>
-    <form action="<?= base_url ?>users/login" method="post" id="loginBox">
+    <form action="<?= base_url ?>index.php?controllers=users&action=login" method="post" id="loginBox">
         <table>
             <tr>
                 <td class="izq"><label for="user_name">Nombre de Usuario:</label></td>

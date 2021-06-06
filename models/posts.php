@@ -106,8 +106,9 @@
             $sql = "select * from posts where posts_id = {$posts_id}";
 
             $result = $this->db->query($sql);
+            $fields=mysqli_fetch_array($result);
 
-            return $result;
+            return $fields;
 
         }
 

@@ -1,5 +1,5 @@
 
-<h1>ID: <?php echo $Posts_info["posts_id"]; ?></h1>
+<h1>POST</h1>
 
 <div class="container">
     <h2><?php echo $Posts_info["topics_name"]; ?></h2>
@@ -36,5 +36,3 @@
     <?php
         }
     ?>
-
-<script src="<?= base_url ?>assets/js/scriptC.js"></script>

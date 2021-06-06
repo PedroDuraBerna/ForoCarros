@@ -235,6 +235,17 @@ button:hover {
     width: 100%;
 }
 
+#pagination a {
+    text-decoration: none;
+}
+
+#pagination span {
+    display: block;
+    border: 1px solid #a52a2a;
+    width: 10px;
+    text-align: center;
+}
+
 .pag {
     width: 20px !important;
     color: #a52a2a;

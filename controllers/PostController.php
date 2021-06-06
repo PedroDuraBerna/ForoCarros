@@ -12,18 +12,16 @@ require_once "models/posts.php";
             $user = new Users;
             $topic = new Topics;
 
-            $result = $p->getPosts_by_id($_POST["id"]);
+            $result = $p->getPosts_by_id($_GET["id"]);
 
-            while ($obj = $result->fetch_object()) {
-                $Posts_info["posts_id"] = $obj->posts_id;
-                $Posts_info["posts_title"] = $obj->posts_title;
-                $Posts_info["posts_text"] = $obj->posts_text;
-                $Posts_info["posts_date"] = $obj->posts_date;
-                $Posts_info["posts_last_modification_date"] = $obj->posts_last_modification_date;
-                $Posts_info["posts_visits_counter"] = $obj->posts_visits_counter;
-                $Posts_info["users_name"] = $user->getUser_name_by_id($obj->users_id);
-                $Posts_info["topics_name"] = $topic->getTopics_name_by_id($obj->topics_id);
-            }
+            $Posts_info["posts_id"] = $result["posts_id"];
+            $Posts_info["posts_title"] = $result["posts_title"];
+            $Posts_info["posts_text"] = $result["posts_text"];
+            $Posts_info["posts_date"] = $result["posts_date"];
+            $Posts_info["posts_last_modification_date"] = $result["posts_last_modification_date"];
+            $Posts_info["posts_visits_counter"] = $result["posts_visits_counter"];
+            $Posts_info["users_name"] = $user->getUser_name_by_id($result["users_id"]);
+            $Posts_info["topics_name"] = $topic->getTopics_name_by_id($result["topics_id"]);
 
             require "views/post/ViewPost.php";
 

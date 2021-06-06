@@ -1,28 +1,21 @@
 
 <?php
     echo "<style>";
-    echo "#pag" . $_SESSION["pagina_topic"] . " {";
+    echo "#pag" . $pag . " {";
     echo "background-color: #a52a2a !important;";
     echo "color: white;";
     echo "}";
     echo "</style>";
 ?>
 
-<?php 
-    if (isset($_POST["pagina"])) {
-        $_SESSION["pagina_topic"] = $_POST["pagina"];
-        header ("Location:" . base_url . "topics/$info");
-    }
-?>
-
 <h1>Tema: <?php echo $info ?></h1>
 
 <div id="pagination">
     <?php
-        for ($i = 0; $i < $_SESSION["numero_paginas_topic"]; $i++) {
-            echo "<form action=" . base_url . "topics/$info method='post'>";
-            echo "<input type='submit' value=".($i+1)." name='pagina' class='pag' id='pag".($i+1)."'>";
-            echo "</form>";
+        for ($i = 0; $i < $numero_paginas; $i++) {
+            echo "<a href='" . base_url . "index.php?controllers=topics&action=" . $info . "&pag=".($i+1)."'>";
+            echo "<span class='pag' id='pag".($i+1)."'>".($i+1)."</spna>";
+            echo "</a>";
         }
     ?>
 </div> 
@@ -40,9 +33,10 @@
         </div>
 
     <?php 
-
-    for ($i = 0; $i < count($All_Posts); $i++) {
-        echo "<form onclick='redirigir_post(\"" . $All_Posts[$i]["posts_id"] . "\")' action='" . base_url . "Post/view' method='post'>";
+    
+    if (isset($All_Posts)) {
+        for ($i = 0; $i < count($All_Posts); $i++) {
+        echo "<a class='topic_a' href='" . base_url . "index.php?controllers=post&action=view&id=" . $All_Posts[$i]["posts_id"] . "' >";
         echo "<div class='row_post'>";
         echo "<span class='bar_1'><img src='" . base_url . "assets/img/topics/" . $All_Posts[$i]["topics_name"] . ".jpg'  title='" . $All_Posts[$i]["topics_name"] . "' alt='" . $All_Posts[$i]["topics_name"] . "' srcset=''></span>";
         echo "<span class='bar_2'>" . $All_Posts[$i]["posts_last_modification_date"] . "</span>";
@@ -50,11 +44,14 @@
         echo "<span class='bar_4'>" . $All_Posts[$i]["users_name"] . "</span>";
         echo "<span class='bar_5'>" . $All_Posts[$i]["posts_visits_counter"] . "</span>";
         echo "<span class='bar_6'>1234";
-        echo "<input type='hidden' name='id' value=" . $All_Posts[$i]["posts_id"] . ">";
-        echo "<input class='hide' type='submit' value='Enviar' id='" . $All_Posts[$i]["posts_id"] . "' >";
         echo "</div>";
-        echo "</form>";
+        echo "</a>";
     }
+    } else {
+        echo "<p class='err'>Todavía no existen posts de " . $info . "</p>";
+    }
+
+
 
     ?>
 
@@ -62,10 +59,10 @@
 
 <div id="pagination">
     <?php
-        for ($i = 0; $i < $_SESSION["numero_paginas_topic"]; $i++) {
-            echo "<form action=" . $_SERVER["PHP_SELF"] . " method='post'>";
-            echo "<input type='submit' value=".($i+1)." name='pagina' class='pag' id='pag".($i+1)."'>";
-            echo "</form>";
+        for ($i = 0; $i < $numero_paginas; $i++) {
+            echo "<a href='" . base_url . "index.php?controllers=topics&action=" . $info . "&pag=".($i+1)."'>";
+            echo "<span class='pag' id='pag".($i+1)."'>".($i+1)."</spna>";
+            echo "</a>";
         }
     ?>
 </div> 

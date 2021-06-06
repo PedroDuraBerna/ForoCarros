@@ -8,41 +8,36 @@ class UsersController {
 
     public function login() {
 
-        require_once "views/user/login.php";
-
         if (isset($_POST["new_user"])) {
-            header("Location:".base_url."users/registration");
+            header("Location:".base_url."index.php?controllers=users&action=registration");
         } 
 
         if (isset($_POST["enter"])) {
 
             $user = new Users;
-            $_POST = $user->scape_characters($_POST);
-            $user->setUsers_name($_POST[0]);
-            $user->setUsers_password($_POST[1]);
+            $user->setUsers_name($_POST["user_name"]);
+            $user->setUsers_password($_POST["user_password"]);
             $err = $user->login();
 
             if (empty($err)) {
-                $_SESSION["user_information"] = $user->getUser($_POST[0]);
-                header("Location:".base_url."users/login");
+                $_SESSION["user_information"] = $user->getUser($_POST["user_name"]);
             } else {
                 $_SESSION["login_error"] = $err;
-                header("Location:".base_url."users/login");
             }
 
         }
+
+        require_once "views/user/login.php";
 
     }
 
     public function logout() {
 
-        var_dump($_SESSION);
-
         if (isset($_POST["logout"])) {
             Utils::deleteSession("user_information");
         }
 
-        header("Location:".base_url);
+        header("Location:".base_url."index.php?controllers=users&action=registration");
 
     }
 
@@ -61,6 +56,8 @@ class UsersController {
     }
 
     public function save() {
+
+        var_dump($_POST);
 
         if (isset($_POST["registration"])) {
 
@@ -118,7 +115,7 @@ class UsersController {
 
         }
 
-        header("Location:".base_url."users/registration");
+        header("Location:".base_url."index.php?controllers=users&action=registration");
 
     }
 
@@ -167,12 +164,12 @@ class UsersController {
             $post->setPosts_date($date);
             $post->setPosts_last_modification_date($date);
             $post->setPosts_visits_counter(0);
-            $post->setPosts_users_id($p->users_id);
+            $post->setPosts_users_id($p["users_id"]);
             $post->setPosts_topics_id($topic->getTopics_id_by_name($_POST["Topic"]));
 
             $post->insert_post();
 
-            header("Location:" . base_url . "users/post");   
+            header("Location:" . base_url . "index.php?");   
 
         }
 

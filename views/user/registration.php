@@ -29,7 +29,7 @@
 
 ?>
 
-<form action="<?=base_url?>users/save" method="POST">
+<form action="<?=base_url?>index.php?controllers=users&action=save" method="POST">
 
 <div class="container">
     <h2>Información requerida</h2>

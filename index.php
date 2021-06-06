@@ -1,53 +1,214 @@
+
 <?php 
+
+//Controlador Frontal
 
 session_start();
 
-require_once "autoload.php";
-require_once "config/db.php";
-require_once "config/parameters.php";
-require_once "helpers/utils.php";
-require_once "views/layout/header.php";
+//Controllers
 
-function show_error(){
-    $error = new errorController;
-    $error->index();
-}
+require "autoload.php";
+require "config/db.php";
+require "config/parameters.php";
+require "helpers/utils.php";
+require "views/layout/header.php";
 
-if(isset($_GET["controller"])){
 
-    $controllerName = $_GET["controller"] . "Controller";
+//CONTROLLERS
 
-} else if(!isset($_GET["controller"]) && !isset($_GET["action"])) {
-
-    $controllerName = controller_default;
-
-} else {
-    show_error();
-    exit();
-}
-
-if(class_exists($controllerName)){
-
-    $controller = new $controllerName;
-
-    if(isset($_GET["action"]) && method_exists($controller,$_GET["action"])){
-
-        $action = $_GET["action"];
-        $controller->$action();
-
-    } else if(!isset($_GET["controller"]) && !isset($_GET["action"])) {
+if (isset($_GET["controllers"])) {
     
-        $action_default = action_default;
-        $controller->$action_default();
+    //users
+    
+    if ($_GET["controllers"] == "users") {
+        if (isset($_GET["action"])) {
 
-    } else {
-        show_error();
+            $u = new UsersController;
+            
+            //ACTIONS
+            
+            if ($_GET["action"] == "login") {
+                
+                $usr = $u->login();
+                
+            }
+            
+            if ($_GET["action"] == "logout") {
+                $u->logout();
+            }
+            
+            if ($_GET["action"] == "registration") {
+                $u->registration();
+            }
+
+            if ($_GET["action"] == "save") {
+                $u->save();
+            }
+
+            if ($_GET["action"] == "myprofile") {
+                $u->myprofile();
+            }
+
+            if ($_GET["action"] == "post") {
+                $u->post();
+            }
+
+            if ($_GET["action"] == "change_email") {
+                $u->change_email();
+            }
+
+            if ($_GET["action"] == "change_interests") {
+                $u->change_interests();
+            }
+
+            if ($_GET["action"] == "change_bio") {
+                $u->change_bio();
+            }
+
+            if ($_GET["action"] == "change_sign") {
+                $u->change_sign();
+            }
+            
+        }
+    }
+    
+    //start
+    
+    if ($_GET["controllers"] == "start") {
+        if (isset($_GET["action"])) {
+
+            $s = new StartController;
+            
+            //ACTIONS
+            
+            if ($_GET["action"] == "index") {
+                $s->index();
+            }
+            
+        }
     }
 
+    //post
+
+    if ($_GET["controllers"] == "post") {
+        if (isset($_GET["action"])) {
+
+            $p = new PostController;
+
+            //ACTIONS
+
+            if ($_GET["action"] == "view") {
+                $p->view();
+            }
+
+        }
+
+    }
+    
+    //topics
+    
+    if ($_GET["controllers"] == "topics") {
+        if (isset($_GET["action"])) {
+
+            $t = new TopicsController;
+            
+            //ACTIONS
+            
+            if ($_GET["action"] == "all") {
+                $t->all();
+            }
+
+            if ($_GET["action"] == "General") {
+                $t->General();
+            }
+
+            if ($_GET["action"] == "Anime") {
+                $t->Anime();
+            }
+
+            if ($_GET["action"] == "Deportes") {
+                $t->Deportes();
+            }
+            
+            if ($_GET["action"] == "Informática") {
+                $t->Informática();
+            }
+
+            if ($_GET["action"] == "Videojuegos") {
+                $t->Videojuegos();
+            }
+
+            if ($_GET["action"] == "Música") {
+                $t->Música();
+            }
+
+            if ($_GET["action"] == "Series") {
+                $t->Series();
+            }
+
+            if ($_GET["action"] == "Cine") {
+                $t->Cine();
+            }
+
+            if ($_GET["action"] == "Humor") {
+                $t->Humor();
+            }
+
+            if ($_GET["action"] == "Política") {
+                $t->Política();
+            }
+
+            if ($_GET["action"] == "Viajes") {
+                $t->Viajes();
+            }
+
+            if ($_GET["action"] == "Economía") {
+                $t->Economía();
+            }
+
+            if ($_GET["action"] == "Cocina") {
+                $t->Cocina();
+            }
+
+            if ($_GET["action"] == "Arte") {
+                $t->Arte();
+            }
+
+            if ($_GET["action"] == "Historia") {
+                $t->Historia();
+            }
+
+            if ($_GET["action"] == "Moda") {
+                $t->Moda();
+            }
+
+            if ($_GET["action"] == "Animales") {
+                $t->Animales();
+            }
+
+            if ($_GET["action"] == "Paranormal") {
+                $t->Paranormal();
+            }
+
+            if ($_GET["action"] == "Conspiraciones") {
+                $t->Conspiraciones();
+            }
+
+            if ($_GET["action"] == "Carros") {
+                $t->Carros();
+            }
+
+        }
+    }
+    
+
 } else {
-    show_error();
+    $s = new StartController;
+    $s->index();
+    require_once "views/start/start.php";
 }
 
 require_once "views/layout/footer.php";
 
 ?>
+

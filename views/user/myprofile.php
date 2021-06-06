@@ -37,7 +37,7 @@ $user = $_SESSION["user_information"];
 <div class="container">
     <h2>Información del usuario</h2>
     <div class="user_photo">
-        <?php if (is_null($user->users_profile_photo)) { ?>
+        <?php if (is_null($user["users_profile_photo"])) { ?>
             <img src="<?= base_url ?>assets/img/icons/profile.svg" alt="" srcset="">
         <?php
         } else {
@@ -51,7 +51,7 @@ $user = $_SESSION["user_information"];
                 <p class="infoUser"><b>Nombre de usuario: </b></p>
             </td>
             <td>
-                <p class="infoUser"><?php echo $user->users_name ?></p>
+                <p class="infoUser"><?php echo $user["users_name"]?></p>
             </td>
         </tr>
         <tr>
@@ -59,9 +59,9 @@ $user = $_SESSION["user_information"];
                 <p class="infoUser"><b>Correo: </b><button class="change" onclick="insertFormEmail('text_email','input_email')"><img src="<?= base_url ?>assets/img/icons/edit.svg" alt="" srcset=""></button></p>
             </td>
             <td>
-                <p id="text_email" class="infoUser"><?php echo $user->users_email ?></p>
-                <form action="<?=base_url?>users/change_email" method="post" id="input_email" class="hide">
-                    <input type="text" name="email" value="<?php echo $user->users_email ?>">
+                <p id="text_email" class="infoUser"><?php echo $user["users_email"] ?></p>
+                <form action="<?=base_url?>index.php?controllers=users&action=change_email" method="post" id="input_email" class="hide">
+                    <input type="text" name="email" value="<?php echo $user["users_email"] ?>">
                     <input type="submit" value="Cambiar">
                 </form>
             </td>
@@ -71,7 +71,7 @@ $user = $_SESSION["user_information"];
                 <p class="infoUser"><b>Fecha de nacimiento: </b></p>
             </td>
             <td>
-                <p class="infoUser"><?php echo $user->users_birth_date ?></p>
+                <p class="infoUser"><?php echo $user["users_birth_date"] ?></p>
             </td>
         </tr>
         <tr>
@@ -79,7 +79,7 @@ $user = $_SESSION["user_information"];
                 <p class="infoUser"><b>Registro: </b></p>
             </td>
             <td>
-                <p class="infoUser"><?php echo $user->users_registration_date ?></p>
+                <p class="infoUser"><?php echo $user["users_registration_date"] ?></p>
             </td>
         </tr>
         <tr>
@@ -87,7 +87,7 @@ $user = $_SESSION["user_information"];
                 <p class="infoUser"><b>Última conexión: </b></p>
             </td>
             <td>
-                <p class="infoUser"><?php echo $user->users_last_connection_date ?></p>
+                <p class="infoUser"><?php echo $user["users_last_connection_date"] ?></p>
             </td>
         </tr>
         <tr>
@@ -95,7 +95,7 @@ $user = $_SESSION["user_information"];
                 <p class="infoUser"><b>Estatus: </b></p>
             </td>
             <td>
-                <p class="infoUser"><?php echo $user->users_rol ?></p>
+                <p class="infoUser"><?php echo $user["users_rol"] ?></p>
             </td>
         </tr>
         <tr>
@@ -113,9 +113,9 @@ $user = $_SESSION["user_information"];
             <td>
                 <p class="infoUser"><b>Intereses: </b><button class="change" onclick="insertFormInterests('text_interest','input_interests')"><img src="<?= base_url ?>assets/img/icons/edit.svg" alt="" srcset=""></button></p>
             </td>
-            <td><?php echo $user->users_interests ?>
-                <form action="<?=base_url?>users/change_interests" method="post" id="input_interests" class="hide">
-                    <input type="text" name="interests" value="<?php echo $user->users_interests ?>">
+            <td><?php echo $user["users_interests"] ?>
+                <form action="<?=base_url?>index.php?controllers=users&action=change_interests" method="post" id="input_interests" class="hide">
+                    <input type="text" name="interests" value="<?php echo $user["users_interests"] ?>">
                     <input type="submit" value="Cambiar">
                 </form>
             </td>
@@ -124,9 +124,9 @@ $user = $_SESSION["user_information"];
             <td>
                 <p class="infoUser"><b>Biografía: </b><button class="change" onclick="insertFormBio('text_bio','input_bio')"><img src="<?= base_url ?>assets/img/icons/edit.svg" alt="" srcset=""></button></p>
             </td>
-            <td><?php echo $user->users_bio ?>
-                <form action="<?=base_url?>users/change_bio" method="post" id="input_bio" class="hide">
-                    <textarea style="resize: none;" cols="40" rows="10" name="bio"> <?php echo $user->users_bio ?></textarea>
+            <td><?php echo $user["users_bio"] ?>
+                <form action="<?=base_url?>index.php?controllers=users&action=change_bio" method="post" id="input_bio" class="hide">
+                    <textarea style="resize: none;" cols="40" rows="10" name="bio"> <?php echo $user["users_bio"] ?></textarea>
                     <input type="submit" value="Cambiar">
                 </form>
             </td>
@@ -135,9 +135,9 @@ $user = $_SESSION["user_information"];
             <td>
                 <p class="infoUser"><b>Firma: </b><button class="change" onclick="insertFormSign('text_sign','input_sign')"><img src="<?= base_url ?>assets/img/icons/edit.svg" alt="" srcset=""></button></p>
             </td>
-            <td><?php echo $user->users_sign ?>
-                <form action="<?=base_url?>users/change_sign" method="post" id="input_sign" class="hide">
-                    <input type="text" name="sign" value="<?php echo $user->users_sign ?>">
+            <td><?php echo $user["users_sign"] ?>
+                <form action="<?=base_url?>index.php?controllers=users&action=change_sign" method="post" id="input_sign" class="hide">
+                    <input type="text" name="sign" value="<?php echo $user["users_sign"] ?>">
                     <input type="submit" value="Cambiar">
                 </form>
             </td>

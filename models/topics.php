@@ -15,7 +15,7 @@
             $sql = "select * from topics";
 
             $result = $this->db->query($sql);
-
+        
             return $result;
 
         }

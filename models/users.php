@@ -126,18 +126,21 @@
         }
 
         public function getUser($user_name) {
+            
+            $user = [];
+            
             $sql = "select * from users where users_name = '{$user_name}'";
-            $user = $this->db->query($sql);
-            $user = $user->fetch_object();
-            return $user;
+            $result = $this->db->query($sql);
+            $fields=mysqli_fetch_array($result);
+            return $fields;
         }
-
+        
         public function getUser_name_by_id($id) {
             $sql = "select users_name from users where users_id = '{$id}'";
             $user = $this->db->query($sql);
             $user = $user->fetch_object();
-            $user_name = $user->users_name;
-            return $user_name;
+            $this->user_name = $user->users_name;
+            return $this->user_name;
         }
 
         public function user_name_exist($user_name) {
@@ -174,11 +177,11 @@
 
             $u = $_SESSION["user_information"];
 
-            $sql = "update users set users_email = '{$email}' where users_name = '{$u->users_name}'";
+            $sql = "update users set users_email = '{$email}' where users_name = '{$u["users_name"]}'";
 
             $this->db->query($sql);
 
-            $u->users_email = $email;
+            $u["users_email"] = $email;
 
             $_SESSION["user_information"] = $u;
 
@@ -190,11 +193,11 @@
 
             $u = $_SESSION["user_information"];
 
-            $sql = "update users set users_interests = '{$interests}' where users_name = '{$u->users_name}'";
+            $sql = "update users set users_interests = '{$interests}' where users_name = '{$u["users_name"]}'";
 
             $this->db->query($sql);
 
-            $u->users_interests = $interests;
+            $u["users_interests"] = $interests;
 
             $_SESSION["user_information"] = $u;
 
@@ -206,11 +209,11 @@
 
             $u = $_SESSION["user_information"];
 
-            $sql = "update users set users_bio = '{$bio}' where users_name = '{$u->users_name}'";
+            $sql = "update users set users_bio = '{$bio}' where users_name = '{$u["users_name"]}'";
 
             $this->db->query($sql);
 
-            $u->users_bio = $bio;
+            $u["users_bio"] = $bio;
 
             $_SESSION["user_information"] = $u;
 
@@ -222,11 +225,11 @@
 
             $u = $_SESSION["user_information"];
 
-            $sql = "update users set users_sign = '{$sign}' where users_name = '{$u->users_name}'";
+            $sql = "update users set users_sign = '{$sign}' where users_name = '{$u["users_name"]}'";
 
             $this->db->query($sql);
 
-            $u->users_sign = $sign;
+            $u["users_sign"] = $sign;
 
             $_SESSION["user_information"] = $u;
 
