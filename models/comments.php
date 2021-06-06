@@ -54,7 +54,7 @@
 
         public function insert_comment($comments_text, $comments_date, $posts_id, $users_id) {
 
-            $sql = "Insert into comments (comments_text, comments_date, posts_id, users_id) values ('{$comments_text}', '{$comments_date}', '{$posts_id}', '{$users_id}')";
+            $sql = "Insert into comments (comments_text, comments_date, posts_id, users_id) values ('" . htmlspecialchars($comments_text) . "', '{$comments_date}', '{$posts_id}', '{$users_id}')";
 
             $this->db->query($sql);
 

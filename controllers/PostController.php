@@ -49,13 +49,14 @@ require_once "models/comments.php";
             $likes = $p->num_likes_post($Posts_info["posts_id"]);
             $Post_info["posts_likes"] = $likes->num_rows;
             
-            $liked = $p->check_liked_post($_SESSION["user_information"]["users_id"],$Posts_info["posts_id"]);
-            $liked = $liked->num_rows;
-
-            if ($liked > 0) {
-                $Posts_info["posts_liked"] = "true"; 
-            } else {
-                $Posts_info["posts_liked"] = "false";
+            if (isset($_SESSION["user_information"])) {
+                $liked = $p->check_liked_post($_SESSION["user_information"]["users_id"],$Posts_info["posts_id"]);
+                $liked = $liked->num_rows;
+                if ($liked > 0) {
+                    $Posts_info["posts_liked"] = "true"; 
+                } else {
+                    $Posts_info["posts_liked"] = "false";
+                }
             }
 
             //COMMENTS INFO

@@ -132,7 +132,7 @@
 
         function insert_post() {
 
-            $sql = "Insert into posts (posts_title, posts_text, posts_date, posts_last_modification_date, posts_visits_counter, users_id, topics_id) values ('{$this->posts_title}', '{$this->posts_text}', '{$this->posts_date}', '{$this->posts_last_modification_date}', '{$this->posts_visits_counter}', '{$this->posts_users_id}', '{$this->posts_topics_id}' )";
+            $sql = "Insert into posts (posts_title, posts_text, posts_date, posts_last_modification_date, posts_visits_counter, users_id, topics_id) values ('" . htmlspecialchars($this->posts_title) . "', '" . htmlspecialchars($this->posts_text) . "', '{$this->posts_date}', '{$this->posts_last_modification_date}', '{$this->posts_visits_counter}', '{$this->posts_users_id}', '{$this->posts_topics_id}' )";
 
             $this->db->query($sql);
 
@@ -191,6 +191,14 @@
             $sql = "delete from liked_posts where users_id = $users_id and posts_id = $posts_id";
 
             $result = $this->db->query($sql);
+
+            return $result;
+
+        }
+
+        public function scape_characters($data) {
+
+            $result = $this->db->real_escape_string($data);
 
             return $result;
 
