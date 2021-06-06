@@ -140,7 +140,25 @@
 
         public function delete_post($post_id) {
 
+            $sql = "delete from liked_posts where posts_id = $post_id";
+
+            $result = $this->db->query($sql);
+
+            $sql = "delete from comments where posts_id = $post_id";
+
+            $result = $this->db->query($sql);
+
             $sql = "delete from posts where posts_id = $post_id";
+
+            $result = $this->db->query($sql);
+
+            return $result;
+
+        }
+
+        public function num_likes_post($posts_id){
+
+            $sql = "select * from liked_posts where posts_id = $posts_id";
 
             $result = $this->db->query($sql);
 
@@ -158,9 +176,9 @@
 
         }
 
-        public function chek_liked_post($users_id, $posts_id) {
+        public function check_liked_post($users_id, $posts_id) {
 
-            $sql = "select * from liked_posts where users_id = $users_id, posts_id = $posts_id";
+            $sql = "select * from liked_posts where users_id = $users_id and posts_id = $posts_id";
 
             $result = $this->db->query($sql);
 
@@ -168,7 +186,13 @@
 
         }
 
-        public function_delete_liked_post() {
+        public function delete_liked_post($users_id, $posts_id) {
+
+            $sql = "delete from liked_posts where users_id = $users_id and posts_id = $posts_id";
+
+            $result = $this->db->query($sql);
+
+            return $result;
 
         }
 

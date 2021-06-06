@@ -31,14 +31,19 @@
             <p><b>Autor:</b> <?php echo $Posts_info["users_name"]; ?></p>
             <p><b>Última modificación:</b> <?php echo $Posts_info["posts_last_modification_date"]; ?></p>
             <p><b>Visitas:</b> <?php echo $Posts_info["posts_visits_counter"]; ?></p>
-            <p><b>Me gustas:</b> 1234</p>
+            <p><b>Me gustas: </b><?php echo  $Post_info["posts_likes"]; ?></p>
             <p><b>Rol:</b><span class="<?php echo $Posts_info["users_rol"]; ?>"> <?php echo $Posts_info["users_rol"]; ?></span></p>
             <p><b>Firma:</b> <?php echo $Posts_info["users_sign"]; ?></p>
         </div>
     </div>
+    <?php if (isset($_SESSION["user_information"])) { ?>
     <div class="buttons_post">
         <form action="<?php $_SERVER["PHP_SELF"] ?>" method="post">
+        <?php if ($Posts_info["posts_liked"] == "false"){ ?>
         <input type="submit" name="liked" value="Me gusta" class="button_post">
+        <?php } else { ?>
+            <input type="submit" name="not_liked" value="No me gusta" class="button_post">
+        <?php } ?>
         <input type="hidden" name="post_id" value="<?php echo $Posts_info["posts_id"] ?>">
         <?php 
             if ($_SESSION["user_information"]["users_rol"] == "moderador" || $_SESSION["user_information"]["users_rol"] == "admin" || $_SESSION["user_information"]["users_name"] == $Posts_info["users_name"]) {
@@ -47,6 +52,7 @@
         ?>
         </form>
     </div>
+    <?php } ?>
 </div>
 
     <?php 
@@ -104,6 +110,7 @@
             echo "</div>";
             echo "</div>";
 ?>
+<?php if (isset($_SESSION["user_information"])) { ?>
             <div class="buttons_post">
             <form action="<?php $_SERVER["PHP_SELF"] ?>" method="post">
             <input type="hidden" name="comment_id" value="<?php echo $All_Comments[$i]["comments_id"]; ?>">
@@ -114,6 +121,7 @@
             ?>
             </form>
             </div>
+<?php } ?>
 <?php
             echo "</div>";
         }

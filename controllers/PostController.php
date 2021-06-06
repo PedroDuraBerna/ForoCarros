@@ -23,6 +23,14 @@ require_once "models/comments.php";
                 header("Location:" . base_url);
             }
 
+            if (isset($_POST["liked"])) {
+                $p->like_post($_SESSION["user_information"]["users_id"],$_POST["post_id"]);
+            }
+
+            if (isset($_POST["not_liked"])) {
+                $p->delete_liked_post($_SESSION["user_information"]["users_id"],$_POST["post_id"]);
+            }
+
             //POST INFO
 
             $result = $p->getPosts_by_id($_GET["id"]);
@@ -38,6 +46,17 @@ require_once "models/comments.php";
             $Posts_info["users_proflile_photo"] = $user->getUsers_profile_photo_by_name($user->getUser_name_by_id($result["users_id"]));
             $Posts_info["users_sign"] = $user->getUsers_sign_by_name($user->getUser_name_by_id($result["users_id"]));
             $Posts_info["users_rol"] = $user->getUsers_rol_by_name($user->getUser_name_by_id($result["users_id"]));
+            $likes = $p->num_likes_post($Posts_info["posts_id"]);
+            $Post_info["posts_likes"] = $likes->num_rows;
+            
+            $liked = $p->check_liked_post($_SESSION["user_information"]["users_id"],$Posts_info["posts_id"]);
+            $liked = $liked->num_rows;
+
+            if ($liked > 0) {
+                $Posts_info["posts_liked"] = "true"; 
+            } else {
+                $Posts_info["posts_liked"] = "false";
+            }
 
             //COMMENTS INFO
 
