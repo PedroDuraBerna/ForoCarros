@@ -97,6 +97,7 @@ nav img:hover {
 
 .paragraph {
     padding: 20px;
+    overflow-x: auto;
 }
 
 /* ROL */
@@ -137,10 +138,6 @@ button:hover {
     border: 3px solid black;
 }
 
-.infoUser {
-    padding: 10px;
-}
-
 .imgProfileEdit {
     background-color: #a52a2a;
 }
@@ -153,7 +150,15 @@ button:hover {
 }
 
 .user_table{
-    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+}
+
+.infoUser {
+    margin: 0px;
+    width: 100%;
 }
 
 .hide {
@@ -174,7 +179,6 @@ button:hover {
     margin-top: 30px;
     margin-bottom: 30px;
     padding: 10px;
-    /*border: 3px solid black;*/
     border-radius: 100%;
     width: 100px;
     background-color: #a52a2a;
@@ -236,30 +240,31 @@ button:hover {
     display: flex;
     flex-direction: row;
     align-items: center;
+    overflow-x: auto;
 }
 
 .bar_1 {
-    width: 15%;
+    width: 70px;
 }
 
 .bar_2 {
-    width: 15%;
+    display: none;
 }
 
 .bar_3 {
-    width: 40%;
+    width: 100%;
 }
 
 .bar_4 {
-    width: 10%;
+    display: none;
 }
 
 .bar_5 {
-    width: 10%;
+    display: none;
 }
 
 .bar_6 {
-    width: 10%;
+    display: none;
 }
 
 .row_post img {
@@ -513,9 +518,11 @@ button:hover {
 }
 
 .post_data {
+    box-sizing: border-box;
     border: 1px solid #a52a2a;
     width: 100%;
     padding: 10px;
+    overflow-x: auto;
 }
 
 .post_data p {
@@ -611,8 +618,14 @@ footer {
     justify-content: start;
 }
 
-.user_table{
-    width: 700px !important;
+.user_table tr td {
+    width: 400px;
+    padding: 20px;
+}
+
+.bar_1, .bar_2, .bar_3, .bar_4, .bar_5, .bar_6 {
+    flex-direction: row;
+    align-items: center;
 }
 
 .bar_1 {
@@ -620,23 +633,27 @@ footer {
 }
 
 .bar_2 {
-    width: 10%;
+    width: 20%;
+    display: block;
 }
 
 .bar_3 {
-    width: 30%;
+    width: 25%;
 }
 
 .bar_4 {
+    display: block;
     width: 20%;
 }
 
 .bar_5 {
-    width: 20%;
+    display: block;
+    width: 10%;
 }
 
 .bar_6 {
-    width: 10%;
+    display: block;
+    width: 15%;
 }
 
 }
@@ -668,6 +685,12 @@ footer {
 #loginBox {
     width: 500px;
     margin: auto;
+}
+
+.bar_1, .bar_2, .bar_3, .bar_4, .bar_5, .bar_6 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .bar_1 {
