@@ -125,6 +125,64 @@
             return $this->users_rol;
         }
 
+        public function delete_User($users_id) {
+
+            $sql = "delete from liked_posts where users_id = $users_id";
+
+            $result = $this->db->query($sql);
+
+            $sql = "delete from comments where users_id = $users_id";
+
+            $result = $this->db->query($sql);
+
+            $sql = "delete from posts where users_id = $users_id";
+
+            $result = $this->db->query($sql);
+
+            $sql = "delete from users where users_id = $users_id";
+
+            $result = $this->db->query($sql);
+
+            return $result;
+
+        }
+
+        public function setUser_as_moderator($users_id) {
+
+            $sql = "update users set users_rol = 'moderator' where users_id = $users_id";
+
+            $result = $this->db->query($sql);
+
+            return $result;
+
+        }
+
+        public function setUser_as_user($users_id) {
+
+            $sql = "update users set users_rol = 'user' where users_id = $users_id";
+
+            $result = $this->db->query($sql);
+
+            return $result;
+
+        }
+
+        public function getAll_users() {
+            $sql = "select * from users";
+            $result = $this->db->query($sql);
+            return $result;
+        }
+
+        public function getAll_users_paginated($empezar_desde, $filas_por_pagina) {
+
+            $sql = "select * from users order by users_name asc limit $empezar_desde, $filas_por_pagina";
+
+            $result = $this->db->query($sql);
+
+            return $result;
+
+        }
+
         public function getUser($user_name) {
             $sql = "select * from users where users_name = '{$user_name}'";
             $result = $this->db->query($sql);
@@ -152,10 +210,52 @@
             $sql = "select users_name from users where users_id = '{$id}'";
             $user = $this->db->query($sql);
             $user = $user->fetch_object();
-            $this->user_name = $user->users_name;
-            return $this->user_name;
+            $this->users_name = $user->users_name;
+            return $this->users_name;
         }
 
+        public function getUsers_id_by_name($users_name) {
+            $sql = "select users_id from users where users_name = '{$users_name}'";
+            $user = $this->db->query($sql);
+            $user = $user->fetch_array();
+            return $user;
+        }
+
+        public function getNumber_posts_by_users_id($users_id) {
+            $sql = "select * from posts where users_id = '{$users_id}'";
+            $posts = $this->db->query($sql);
+            $posts = $posts->num_rows;
+            return $posts;
+        }
+
+        public function getNumber_like_recibed_by_users_id($users_id) {
+            $sql = "select * from posts inner join liked_posts on posts.posts_id = liked_posts.posts_id where posts.users_id = $users_id";
+            $posts = $this->db->query($sql);
+            $posts = $posts->num_rows;
+            return $posts;
+        }
+
+        public function getNumber_comments_by_users_id($users_id) {
+            $sql = "select * from comments where users_id = '{$users_id}'";
+            $posts = $this->db->query($sql);
+            $posts = $posts->num_rows;
+            return $posts;
+        }
+
+        public function getNumber_comments_recibed_by_users_id($users_id) {
+            $sql = "Select * from posts
+            inner join comments on posts.posts_id = comments.posts_id where posts.users_id = $users_id";
+            $posts = $this->db->query($sql);
+            $posts = $posts->num_rows;
+            return $posts;
+        }
+
+        public function getNumber_like_gived_by_users_id($users_id) {
+            $sql = "select * from liked_posts where users_id = '{$users_id}'";
+            $posts = $this->db->query($sql);
+            $posts = $posts->num_rows;
+            return $posts;
+        }
         
         public function getUsers_rol_by_name($users_name) {
             $sql = "select users_rol from users where users_name = '{$users_name}'";
@@ -287,6 +387,14 @@
 
         }
 
+        public function update_last_connection_date($actual_date){
+
+            $sql = "update users set users_last_connection_date = '{$actual_date}' where users_name = '{$_SESSION["user_information"]["users_name"]}'";
+            
+            $save = $this->db->query($sql);
+
+        }
+
         public function save() {
 
             $result = false;
@@ -324,6 +432,19 @@
             }
 
             return $err;
+
+        }
+
+        
+        public function getPublic_user($users_name) {
+
+            $sql = "select * from users where users_name = '{$users_name}'";
+
+            $result = $this->db->query($sql);
+
+            $result = $result->fetch_assoc();
+
+            return $result;
 
         }
 

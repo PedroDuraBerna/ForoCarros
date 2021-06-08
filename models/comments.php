@@ -58,6 +58,12 @@
 
             $this->db->query($sql);
 
+            $today = date("Y-m-d H:i:s");
+
+            $sql = "update posts set posts_last_modification_date = '{$today}' where posts_id = $posts_id";
+
+            $this->db->query($sql);
+
             return $sql;
 
         }
@@ -72,9 +78,19 @@
 
         }
 
+        public function getAll_comments() {
+
+            $sql = "select * from comments";
+
+            $result = $this->db->query($sql);
+
+            return $result;
+
+        }
+
         public function getAll_comments_by_id_paginated($empezar_desde, $filas_por_pagina, $posts_id) {
 
-            $sql = "select * from comments where posts_id = $posts_id order by comments_date desc limit $empezar_desde, $filas_por_pagina";
+            $sql = "select * from comments where posts_id = $posts_id order by comments_date asc limit $empezar_desde, $filas_por_pagina";
 
             $result = $this->db->query($sql);
 

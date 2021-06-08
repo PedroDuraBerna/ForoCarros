@@ -99,6 +99,35 @@
 
         }
 
+        function getAll_posts_by_users_id($users_id) {
+
+            $sql = "select * from posts where users_id = $users_id";
+            
+            $result = $this->db->query($sql);
+
+            return $result;
+
+        }
+
+        function get_all_likes_of_the_posts() {
+
+            $sql = "select * from liked_posts";
+
+            $result = $this->db->query($sql);
+
+            return $result;
+        }
+
+        function getAll_posts_by_users_id_paginated($empezar_desde, $filas_por_pagina, $users_id) {
+            
+            $sql = "select * from posts where users_id = $users_id order by posts_last_modification_date desc limit $empezar_desde, $filas_por_pagina";
+
+            $result = $this->db->query($sql);
+
+            return $result;
+
+        }
+
         function getPosts_by_id($posts_id) {
 
             $sql = "select * from posts where posts_id = {$posts_id}";
@@ -201,6 +230,42 @@
             $result = $this->db->real_escape_string($data);
 
             return $result;
+
+        }
+
+        public function add_visit($posts_id) {
+
+            $sql = ("select posts_visits_counter from posts where posts_id = $posts_id");
+
+            $result = $this->db->query($sql);
+
+            $result = $result->fetch_assoc();
+
+            $visits = $result["posts_visits_counter"];
+
+            $visits++;
+
+            $sql = ("update posts set posts_visits_counter = $visits where posts_id = $posts_id");
+
+            $result = $this->db->query($sql);
+
+        }
+
+        public function rest_visit($posts_id) {
+
+            $sql = ("select posts_visits_counter from posts where posts_id = $posts_id");
+
+            $result = $this->db->query($sql);
+
+            $result = $result->fetch_assoc();
+
+            $visits = $result["posts_visits_counter"];
+
+            $visits--;
+
+            $sql = ("update posts set posts_visits_counter = $visits where posts_id = $posts_id");
+
+            $result = $this->db->query($sql);
 
         }
 

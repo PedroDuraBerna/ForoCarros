@@ -5,13 +5,15 @@ require_once "models/topics.php";
 require_once "models/posts.php";
 require_once "models/comments.php";
 
-class UsersController {
+class UsersController
+{
 
-    public function login() {
+    public function login()
+    {
 
         if (isset($_POST["new_user"])) {
-            header("Location:".base_url."index.php?controllers=users&action=registration");
-        } 
+            header("Location:" . base_url . "index.php?controllers=users&action=registration");
+        }
 
         if (isset($_POST["enter"])) {
 
@@ -22,41 +24,47 @@ class UsersController {
 
             if (empty($err)) {
                 $_SESSION["user_information"] = $user->getUser($_POST["user_name"]);
+                $_SESSION["user_information"]["users_birth_date"] = date_format(date_create($_SESSION["user_information"]["users_birth_date"]), "d/m/Y");
+                $_SESSION["user_information"]["users_registration_date"] = date_format(date_create($_SESSION["user_information"]["users_registration_date"]), "d/m/Y H:i:s");
+                $_SESSION["user_information"]["users_last_connection_date"] = date_format(date_create($_SESSION["user_information"]["users_last_connection_date"]), "d/m/Y H:i:s");
             } else {
                 $_SESSION["login_error"] = $err;
             }
-
         }
 
         require_once "views/user/login.php";
-
     }
 
-    public function logout() {
+    public function logout()
+    {
 
         if (isset($_POST["logout"])) {
+            $user = new Users;
+            $actual_date = date('Y-m-d h:m:s');
+            $user->update_last_connection_date($actual_date);
             Utils::deleteSession("user_information");
         }
 
-        header("Location:".base_url."index.php?controllers=users&action=registration");
-
+        header("Location:" . base_url . "index.php?controllers=users&action=registration");
     }
 
-    public function registration() {
+    public function registration()
+    {
         require_once "views/user/registration.php";
     }
 
-    public function ViewPost($posts_id) {
+    public function ViewPost($posts_id)
+    {
 
         $p = new Posts;
 
         $result = $p->getPosts_by_id($posts_id);
 
         var_dump($result);
-
     }
 
-    public function save() {
+    public function save()
+    {
 
         var_dump($_POST);
 
@@ -75,7 +83,7 @@ class UsersController {
             $data["user_email"] = $_POST["user_email"];
 
             if (!isset($_POST["accepted_rules"])) {
-                $err["accepted_rules"] = "No has aceptado las normas del foro."; 
+                $err["accepted_rules"] = "No has aceptado las normas del foro.";
             }
 
             $data = $user->scape_characters($data);
@@ -83,17 +91,15 @@ class UsersController {
             if ($user->user_name_exist($data[0])) {
 
                 $err["user_name"]["exist"] = "Este nombre de usuario ya existe.";
-
             }
 
             if ($user->user_email_exist($data[4])) {
 
                 $err["user_email"]["exist"] = "Este email de usuario ya existe.";
-
             }
 
             $err += Validations::registration_validation($data);
-    
+
             if (empty($err)) {
 
                 $_SESSION["status_registration"] = "completed";
@@ -107,25 +113,34 @@ class UsersController {
                 $user->setUsers_registration_date($actual_date);
                 $user->setUsers_last_connection_date($actual_date);
                 $user->save();
-
             } else {
                 $_SESSION["info"] = $data;
                 $_SESSION["status_registration"] = "failed";
                 $_SESSION["registration"] = $err;
             }
-
         }
 
-        header("Location:".base_url."index.php?controllers=users&action=registration");
-
+        header("Location:" . base_url . "index.php?controllers=users&action=registration");
     }
 
-    public function myprofile() {
+    public function myprofile()
+    {
+
+        $u = new Users;
+        $Aux_info = [];
+
+        $Aux_info["number_posts"] = $u->getNumber_posts_by_users_id($_SESSION["user_information"]["users_id"]);
+        $Aux_info["number_likes_recibed"] = $u->getNumber_like_recibed_by_users_id($_SESSION["user_information"]["users_id"]);
+        $Aux_info["number_likes_gived"] = $u->getNumber_like_gived_by_users_id($_SESSION["user_information"]["users_id"]);
+        $Aux_info["number_comments"] = $u->getNumber_comments_by_users_id($_SESSION["user_information"]["users_id"]);
+        $Aux_info["number_comments_recibed"] = $u->getNumber_comments_recibed_by_users_id($_SESSION["user_information"]["users_id"]);
+
         require_once "views/user/myprofile.php";
     }
 
-    public function post() {
-        
+    public function post()
+    {
+
         $count = 0;
         $topics = [];
         $topic = new Topics;
@@ -149,7 +164,7 @@ class UsersController {
                 $err["text"] = "Has de escribir algo";
             }
         }
-        
+
 
         if (empty($err) && isset($_POST["Topic"])) {
 
@@ -157,35 +172,38 @@ class UsersController {
             $topic = new Topics;
             $p = $_SESSION["user_information"];
 
-            $today = getdate();
-            $date = $today["year"] . "-" . $today["mon"] . "-" . $today["mday"] . " " . $today["hours"] . ":" . $today["minutes"] . ":" . $today["seconds"]; 
+            $today = date('Y-m-d H:i:s');
 
             $post->setPosts_title($_POST["title"]);
             $post->setPosts_text($_POST["text"]);
-            $post->setPosts_date($date);
-            $post->setPosts_last_modification_date($date);
+            $post->setPosts_date($today);
+            $post->setPosts_last_modification_date($today);
             $post->setPosts_visits_counter(0);
             $post->setPosts_users_id($p["users_id"]);
             $post->setPosts_topics_id($topic->getTopics_id_by_name($_POST["Topic"]));
 
             $post->insert_post();
 
-            header("Location:" . base_url . "index.php?");   
-
+            header("Location:" . base_url . "index.php?");
         }
 
         require_once "views/user/post.php";
-
     }
 
-    public function comment() {
+    public function comment()
+    {
 
         if (isset($_POST["comment"])) {
+
+            $p = new Posts;
+
+            $p->rest_visit($_POST["posts_id"]);
 
             $err = [];
 
             $comments_text = $_POST["post_comment"];
-            $comments_date = date('Y-m-d h:m:s');
+            $comments_date = date('Y-m-d H:i:s');
+            echo $comments_date;
             $posts_id = $_POST["posts_id"];
             $users_id = $_SESSION["user_information"]["users_id"];
 
@@ -197,17 +215,15 @@ class UsersController {
 
                 $c = new Comments;
 
-                echo $c->insert_comment($comments_text, $comments_date, $posts_id, $users_id);
+                $c->insert_comment($comments_text, $comments_date, $posts_id, $users_id);
 
                 header("Location:" . base_url . "index.php?controllers=post&action=view&id=" . $posts_id);
-                
             }
-
         }
-
     }
 
-    public function change_email() {
+    public function change_email()
+    {
 
         $user = new Users;
         $email = $_POST["email"];
@@ -228,7 +244,8 @@ class UsersController {
         require_once "views/user/myprofile.php";
     }
 
-    public function change_interests() {
+    public function change_interests()
+    {
 
         $user = new Users;
         $interests = $_POST["interests"];
@@ -243,10 +260,10 @@ class UsersController {
         }
 
         require_once "views/user/myprofile.php";
-
     }
 
-    public function change_bio() {
+    public function change_bio()
+    {
 
         $user = new Users;
         $bio = $_POST["bio"];
@@ -261,10 +278,10 @@ class UsersController {
         }
 
         require_once "views/user/myprofile.php";
-
     }
 
-    public function change_sign() {
+    public function change_sign()
+    {
 
         $user = new Users;
         $sign = $_POST["sign"];
@@ -279,10 +296,10 @@ class UsersController {
         }
 
         require_once "views/user/myprofile.php";
-
     }
 
-    public function change_users_photo() {
+    public function change_users_photo()
+    {
 
         if (isset($_POST["change_photo"])) {
 
@@ -308,7 +325,6 @@ class UsersController {
                             unlink($path . $_SESSION["user_information"]["users_profile_photo"]);
                             $_SESSION["user_information"]["users_profile_photo"] = $name;
                         }
-
                     }
 
                     if (move_uploaded_file($tmp_name, $path . $name)) {
@@ -317,28 +333,105 @@ class UsersController {
                     } else {
                         $err["change"] = "Ocurrió algún error al subir la imagen al servidor. No se ha podido guardar.";
                     }
-
                 }
-
             }
 
             require_once "views/user/myprofile.php";
-
         }
-
     }
 
-    public function public_profile() {
-        //codigo para obtener la info publica a ver del usuario
-        require_once "views/user/publicprofile.php";
+    public function public_profile()
+    {
+
+        if (isset($_GET["name"])) {
+
+            $u = new Users;
+
+            $user = $u->getPublic_user($_GET["name"]);
+
+            $Aux_info["number_posts"] = $u->getNumber_posts_by_users_id($user["users_id"]);
+            $Aux_info["number_likes_recibed"] = $u->getNumber_like_recibed_by_users_id($user["users_id"]);
+            $Aux_info["number_likes_gived"] = $u->getNumber_like_gived_by_users_id($user["users_id"]);
+            $Aux_info["number_comments"] = $u->getNumber_comments_by_users_id($user["users_id"]);
+            $Aux_info["number_comments_recibed"] = $u->getNumber_comments_recibed_by_users_id($user["users_id"]);
+
+            require_once "views/user/publicprofile.php";
+        } else {
+            echo "error";
+        }
     }
 
-    public function getPost_by_id($posts_id) {
+    public function getPost_by_id($posts_id)
+    {
 
         $p = new Posts;
         $result = $p->getPosts_by_id($posts_id);
         return $result;
-
     }
 
+    public function adminConfiguration()
+    {
+
+        $p = new Posts;
+        $c = new Comments;
+        $u = new Users;
+
+        //POST
+
+        if (isset($_POST["delete_user"])) {
+            $u->delete_User($_POST["users_id"]);
+            header("Location:".base_url."index.php?controllers=users&action=adminConfiguration");
+        }
+
+        if (isset($_POST["user_as_moderator"])) {
+            $u->setUser_as_moderator($_POST["users_id"]);
+            header("Location:".base_url."index.php?controllers=users&action=adminConfiguration");
+        }
+
+        if (isset($_POST["user_as_user"])) {
+            $u->setUser_as_user($_POST["users_id"]);
+            header("Location:".base_url."index.php?controllers=users&action=adminConfiguration");
+        }
+
+        //INFORMATION
+
+        $All_posts = $p->getAll_Posts()->num_rows;
+        $All_users = $u->getAll_users()->num_rows;
+        $All_comments = $c->getAll_comments()->num_rows;
+        $All_likes = $p->get_all_likes_of_the_posts()->num_rows;
+
+        //PAGINATION
+
+        $filas_por_pagina = 10;
+
+        if (isset($_GET["pag"])) {
+            $pag = $_GET["pag"];
+        } else {
+            $pag = 1;
+        }
+
+        $empezar_desde = ($pag - 1) * $filas_por_pagina;
+
+        $numero_filas = $All_users;
+
+        $numero_paginas = ceil($numero_filas / $filas_por_pagina);
+
+        //PAGINATION
+
+        $result = $u->getAll_users_paginated($empezar_desde, $filas_por_pagina);
+
+        $All_users_info = [];
+        $count = 0;
+
+        while ($array = $result->fetch_assoc()) {
+            $All_users_info[$count]["users_name"] = $array["users_name"];
+            $All_users_info[$count]["users_id"] = $array["users_id"];
+            $All_users_info[$count]["users_rol"] = $array["users_rol"];
+            $All_users_info[$count]["users_email"] = $array["users_email"];
+            $All_users_info[$count]["users_profile_photo"] = $array["users_profile_photo"];
+            $count++;
+        }
+
+        require "views/user/configuration.php";
+    }
 }

@@ -78,6 +78,19 @@ if (isset($_GET["controllers"])) {
             if ($_GET["action"] == "comment") {
                 $u->comment();
             }
+
+            if ($_GET["action"] == "adminConfiguration") {
+                if(isset($_SESSION["user_information"])){
+                    if($_SESSION["user_information"]["users_rol"] == "admin"){
+                        $u->adminConfiguration();
+                    } else {
+                        echo "no eres admin";
+                    }
+                } else {
+                    echo "no eres admin";
+                }
+                
+            }
             
         }
     }
@@ -110,6 +123,12 @@ if (isset($_GET["controllers"])) {
             if ($_GET["action"] == "view") {
                 $p->view();
             }
+
+            if ($_GET["action"] == "viewpost") {
+                if (isset($_GET["name"])) {
+                    $p->view_all_posts_by_users_name($_GET["name"]);
+                }
+            }   
 
         }
 

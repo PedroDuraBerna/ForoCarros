@@ -73,7 +73,7 @@ $user = $_SESSION["user_information"];
             <td>
                 <p id="text_email" class="infoUser"><?php echo $user["users_email"] ?></p>
                 <form action="<?=base_url?>index.php?controllers=users&action=change_email" method="post" id="input_email" class="hide">
-                    <input type="text" name="email" value="<?php echo $user["users_email"] ?> class='input_change'">
+                    <input type="text" name="email" value="<?php echo $user["users_email"] ?>" class='input_change'>
                     <input type="submit" value="Cambiar" class='button_change'>
                 </form>
             </td>
@@ -125,8 +125,12 @@ $user = $_SESSION["user_information"];
                 <p class="infoUser"><b>Enlace a perfíl público: </b></p>
             </td>
             <td>
-                <p class="infoUser"></p>
+                <p class="infoUser"><a href="<?php echo base_url . "index.php?controllers=users&action=publicprofile&name=" . $_SESSION["user_information"]["users_name"]  ?>"><?php echo base_url . "index.php?controllers=users&action=publicprofile&name=" . $_SESSION["user_information"]["users_name"] ?></a></p>
             </td>
+        </tr>
+        <tr>
+            <td><p class="infoUser"><b>Ver todos mis posts: </b></p></td>
+            <td><p class="infoUser"><a href="<?php echo base_url . "index.php?controllers=post&action=viewpost&name=" . $_SESSION["user_information"]["users_name"]  ?>"><?php echo base_url . "index.php?controllers=post&action=viewpost&name=" . $_SESSION["user_information"]["users_name"] ?></a></p></td>
         </tr>
     </table>
     <h2>Conóceme</h2>
@@ -171,25 +175,31 @@ $user = $_SESSION["user_information"];
             <td>
                 <p class="infoUser"><b>Nº de posts:</b></p>
             </td>
-            <td></td>
+            <td><?php echo $Aux_info["number_posts"] ?></td>
         </tr>
         <tr>
             <td>
                 <p class="infoUser"><b>Nº de mensajes escritos:</b></p>
             </td>
-            <td></td>
+            <td><?php echo $Aux_info["number_comments"] ?></td>
         </tr>
         <tr>
             <td>
                 <p class="infoUser"><b>Nº de mensajes recibidos:</b></p>
             </td>
-            <td></td>
+            <td><?php echo $Aux_info["number_comments_recibed"] ?></td>
         </tr>
         <tr>
             <td>
-                <p class="infoUser"><b>Nº de likes:</b></p>
+                <p class="infoUser"><b>Nº de likes dados:</b></p>
             </td>
-            <td></td>
+            <td><?php echo $Aux_info["number_likes_gived"] ?></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="infoUser"><b>Nº de likes recibidos:</b></p>
+            </td>
+            <td><?php echo $Aux_info["number_likes_recibed"] ?></td>
         </tr>
     </table>
 </div>

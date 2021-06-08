@@ -115,7 +115,7 @@
             <form action="<?php $_SERVER["PHP_SELF"] ?>" method="post">
             <input type="hidden" name="comment_id" value="<?php echo $All_Comments[$i]["comments_id"]; ?>">
             <?php 
-                if ($_SESSION["user_information"]["users_rol"] == "moderador" || $_SESSION["user_information"]["users_rol"] == "admin" || $_SESSION["user_information"]["users_name"] == $Posts_info["users_name"]) {
+                if ($_SESSION["user_information"]["users_rol"] == "moderador" || $_SESSION["user_information"]["users_rol"] == "admin") {
                     echo "<input type='submit' name='delete_comment' value='Eliminar' class='button_post'>";
                 }
             ?>
