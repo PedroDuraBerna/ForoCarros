@@ -56,7 +56,7 @@
                 
                     if ($user["users_rol"] == "admin") {
                         echo "<p class='infoUser err'>" . $user["users_rol"] . "</p>";
-                    } else if ($user["users_rol"] == "moderador") {
+                    } else if ($user["users_rol"] == "moderator") {
                         echo "<p class='infoUser' style='color:orange;'>" . $user["users_rol"] . "</p>";
                     } else {
                         echo "<p class='infoUser' style='color:green;'>" . $user["users_rol"] . "</p>";
@@ -67,7 +67,7 @@
         </tr>
         <tr>
             <td><p class="infoUser"><b>Ver todos mis posts: </b></p></td>
-            <td><p class="infoUser"><a href="<?php echo base_url . "index.php?controllers=post&action=viewpost&name=" . $user["users_name"] ?>"><?php echo base_url . "index.php?controllers=post&action=viewpost&name=" . $_SESSION["user_information"]["users_name"] ?></a></p></td>
+            <td><p class="infoUser"><a href="<?php echo base_url . "index.php?controllers=post&action=viewpost&name=" . $user["users_name"] ?>"><?php echo base_url . "index.php?controllers=post&action=viewpost&name=" . $user["users_name"] ?></a></p></td>
         </tr>
     </table>
     <h2>Conóceme</h2>

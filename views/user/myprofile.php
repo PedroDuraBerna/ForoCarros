@@ -10,6 +10,7 @@ $user = $_SESSION["user_information"];
 ?>
 
 <h1>Perfil de usuario</h1>
+
 <div id="buttonConfig">
     <a href="<?= base_url ?>index.php?controllers=users&action=myprofile" class="button"><img src="<?= base_url ?>assets/img/icons/profile.svg" alt="" srcset=""></a>
     <?php if ($user["users_rol"] == "admin"){

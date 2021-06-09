@@ -10,7 +10,33 @@
     echo "</style>";
 ?>
 
+<style>
+    .button {
+        background-color: rgb(200,100,100) !important;
+    }
+    .button_config {
+        background-color: #a52a2a;
+        border-color: #a52a2a;
+    }
+</style>
+
+<?php
+$user = new Users;
+$user = $_SESSION["user_information"];
+?>
+
 <h1>Eres Amdmin!</h1>
+
+<div id="buttonConfig">
+    <a href="<?= base_url ?>index.php?controllers=users&action=myprofile" class="button"><img src="<?= base_url ?>assets/img/icons/profile.svg" alt="" srcset=""></a>
+    <?php if ($user["users_rol"] == "admin"){
+    ?>
+        <a href="<?= base_url ?>index.php?controllers=users&action=adminConfiguration" class="button_config" ><img src="<?= base_url ?>assets/img/icons/gear.svg" alt="" srcset=""></a>
+    <?php
+        } 
+    ?>
+</div>
+
 <div class="container">
     <h2>Información de ForoCarros:</h2>
     <table class="table_fancy">
@@ -68,8 +94,8 @@
         </tr>
     </table>
     <div class="buttons_post">
-        <form action="">
-            <input type="submit" value="Informe PDF" class="button_post">
+        <form action="<?php base_url ?>index.php?controllers=users&action=adminConfiguration" method="post">
+            <input type="submit" name="pdf" value="Informe PDF" class="button_post">
         </form>
     </div>
 </div>

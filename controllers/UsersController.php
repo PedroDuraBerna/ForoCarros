@@ -45,7 +45,7 @@ class UsersController
             Utils::deleteSession("user_information");
         }
 
-        header("Location:" . base_url . "index.php?controllers=users&action=registration");
+        header("Location:" . base_url . "index.php?");
     }
 
     public function registration()
@@ -113,6 +113,7 @@ class UsersController
                 $user->setUsers_registration_date($actual_date);
                 $user->setUsers_last_connection_date($actual_date);
                 $user->save();
+                header("Location:" . base_url . "index.php?controllers=users&action=myprofile");
             } else {
                 $_SESSION["info"] = $data;
                 $_SESSION["status_registration"] = "failed";
@@ -184,7 +185,7 @@ class UsersController
 
             $post->insert_post();
 
-            header("Location:" . base_url . "index.php?");
+            header("Location:" . base_url . "index.php?controllers=post&action=viewpost&name=" . $_SESSION["user_information"]["users_name"]);
         }
 
         require_once "views/user/post.php";
@@ -380,17 +381,17 @@ class UsersController
 
         if (isset($_POST["delete_user"])) {
             $u->delete_User($_POST["users_id"]);
-            header("Location:".base_url."index.php?controllers=users&action=adminConfiguration");
+            header("Location:" . base_url . "index.php?controllers=users&action=adminConfiguration");
         }
 
         if (isset($_POST["user_as_moderator"])) {
             $u->setUser_as_moderator($_POST["users_id"]);
-            header("Location:".base_url."index.php?controllers=users&action=adminConfiguration");
+            header("Location:" . base_url . "index.php?controllers=users&action=adminConfiguration");
         }
 
         if (isset($_POST["user_as_user"])) {
             $u->setUser_as_user($_POST["users_id"]);
-            header("Location:".base_url."index.php?controllers=users&action=adminConfiguration");
+            header("Location:" . base_url . "index.php?controllers=users&action=adminConfiguration");
         }
 
         //INFORMATION
@@ -432,6 +433,13 @@ class UsersController
             $count++;
         }
 
+        if (isset($_POST["pdf"])) {
+
+            header("Location:" . base_url . "views/user/pdf.php");
+
+        }
+
         require "views/user/configuration.php";
+        
     }
 }

@@ -127,17 +127,37 @@
 
         public function delete_User($users_id) {
 
-            $sql = "delete from liked_posts where users_id = $users_id";
+            //BORRAMOS TODOS LOS COMENTARIOS RECIBIDOS
+
+            $sql = "delete from comments where posts_id in (select posts_id from posts where users_id = $users_id)";
 
             $result = $this->db->query($sql);
+
+            //BORRAMOS TODOS LOS COMENTARIOS DADOS
 
             $sql = "delete from comments where users_id = $users_id";
 
             $result = $this->db->query($sql);
 
+            //BORRAMOS TODOS LOS MEGUSTAS RECIBIDOS
+
+            $sql = "delete from liked_posts where posts_id in (select posts_id from posts where users_id = $users_id)";
+
+            $result = $this->db->query($sql);
+
+            //BORRAR TODOS LOS MEGUSTAS DADOS
+
+            $sql = "delete from liked_posts where users_id = $users_id";
+
+            $result = $this->db->query($sql);
+
+            //BRORRAR TODOS LOS POSTS
+
             $sql = "delete from posts where users_id = $users_id";
 
             $result = $this->db->query($sql);
+
+            //BORRAR EL USUARIO
 
             $sql = "delete from users where users_id = $users_id";
 

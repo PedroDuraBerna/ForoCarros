@@ -29,7 +29,7 @@
     ?>
 </div> 
 <div class="container">
-    <h2>Actividad de los últimos posts</h2>
+    <h2>Actividad</h2>
 
         <div id="start_bar">
             <span class='bar_1'>Tema</span>
@@ -128,8 +128,9 @@
     <br>
     <br>
     <br>
-    <div class="clock-box">
-  <div class="clock">
+
+    <!-- <div class="clock-box">
+    <div class="clock">
     <div class="number number-1">1</div>
     <div class="number number-2">2</div>
     <div class="number number-3">3</div>
@@ -142,12 +143,11 @@
     <div class="number number-10">10</div>
     <div class="number number-11">11</div>
     <div class="number number-12">12</div>
-
     <div class="hands second" second-hand></div>
     <div class="hands minute" minute-hand></div>
     <div class="hands hour" hour-hand></div>
     <div class="circle"></div>
+    </div> -->
 
-  </div>
 </div> 
 </div>

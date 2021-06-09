@@ -324,6 +324,7 @@ button:hover {
     padding: 10px;
     border-radius: 100%;
     width: 100px;
+    height :100px;
     background-color: #a52a2a;
 }
 
@@ -398,6 +399,7 @@ button:hover {
 
 .img_user img {
     width: 100px;
+    height: 100px;
     background-color: rgb(200,100,100);
 }
 
@@ -410,7 +412,7 @@ button:hover {
     text-decoration: none;
     color: white;
     width: 100%;
-    height: 100%;
+    height: 35px;
 }
 
 .img_user a:hover {
@@ -469,6 +471,7 @@ button:hover {
 
 .row_post img {
     width: 50px;
+    height: 50px;
 }
 
 .row_post:hover {
@@ -599,7 +602,7 @@ button:hover {
     margin: 5px;
 }
 
-.button {
+.button, .button_config {
     background-color: #a52a2a;
     color: white;
     padding: 10px;
@@ -607,7 +610,7 @@ button:hover {
     border: 5px solid #a52a2a !important;
 }
 
-.button:hover {
+.button:hover, .button_config:hover {
     transition: 0.5s;
     cursor: pointer;
     border: 5px solid black !important;
@@ -619,7 +622,7 @@ button:hover {
     margin-top: 20px;
 }
 
-#buttons .button {
+#buttons .button, #buttons .button_config {
     width: 45%;
 }
 
@@ -672,6 +675,7 @@ button:hover {
 
 .topic_p img {
     width: 50px;
+    height: 50px;
 }
 
 .topic_p:hover {

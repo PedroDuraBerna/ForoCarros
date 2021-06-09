@@ -13,7 +13,6 @@ require "config/parameters.php";
 require "helpers/utils.php";
 require "views/layout/header.php";
 
-
 //CONTROLLERS
 
 if (isset($_GET["controllers"])) {

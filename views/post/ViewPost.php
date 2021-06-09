@@ -29,7 +29,7 @@
         </div>
         <div class="post_data">
             <p><b>Autor:</b> <?php echo $Posts_info["users_name"]; ?></p>
-            <p><b>Última modificación:</b> <?php echo $Posts_info["posts_last_modification_date"]; ?></p>
+            <p><b>Último comentario:</b> <?php echo $Posts_info["posts_last_modification_date"]; ?></p>
             <p><b>Visitas:</b> <?php echo $Posts_info["posts_visits_counter"]; ?></p>
             <p><b>Me gustas: </b><?php echo  $Post_info["posts_likes"]; ?></p>
             <p><b>Rol:</b><span class="<?php echo $Posts_info["users_rol"]; ?>"> <?php echo $Posts_info["users_rol"]; ?></span></p>
