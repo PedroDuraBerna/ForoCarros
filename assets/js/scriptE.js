@@ -1,4 +1,4 @@
-
+//Script del cambio de estilo
 // $(document).ready(function(){
 //     $("#theme").on("change",function(e){
 //         console.log(e.target.value);

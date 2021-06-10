@@ -1,3 +1,6 @@
+
+//Script del tiempo
+
 let ahora = new Date()
 let key = "3c001d87c8d1c5b8735c2d9af953d3bc"
 

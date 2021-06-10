@@ -171,6 +171,7 @@ class UsersController
 
             $post = new Posts;
             $topic = new Topics;
+            $OK = "Post";
             $p = $_SESSION["user_information"];
 
             $today = date('Y-m-d H:i:s');
@@ -182,10 +183,10 @@ class UsersController
             $post->setPosts_visits_counter(0);
             $post->setPosts_users_id($p["users_id"]);
             $post->setPosts_topics_id($topic->getTopics_id_by_name($_POST["Topic"]));
+            $post->setPosts_visibility($_POST["visibility"]);
 
             $post->insert_post();
 
-            header("Location:" . base_url . "index.php?controllers=post&action=viewpost&name=" . $_SESSION["user_information"]["users_name"]);
         }
 
         require_once "views/user/post.php";

@@ -9,5 +9,6 @@
 <script src="<?= base_url ?>assets/js/scriptC.js"></script>
 <script src="<?= base_url ?>assets/js/scriptD.js"></script>
 <script src="<?= base_url ?>assets/js/scriptE.js"></script>
+<script src="<?= base_url ?>assets/js/countDown3.js"></script>
 </body>
 </html>

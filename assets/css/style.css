@@ -129,23 +129,34 @@ nav img:hover {
     right: -20px; 
   }
 
+  .margin_20 {
+      margin: 20px;
+  }
+
   /* CLOCK */
 
+.clock-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
   .clock {
-    height: 30rem;
-    width: 30rem;
-    background-color: #000452;
-    border: 1rem solid #000447;
+    height: 200px;
+    width: 200px;
+    background-color: #a52a2a;
+    border: 3px solid black;
     border-radius: 50%;
-  
     position: relative;
+    margin: 20px;
   }
   
   .circle {
-    height: 2rem;
-    width: 2rem;
+    height: 1rem;
+    width: 1rem;
     border-radius: 50%;
-    background-color: #000447;
+    background-color: black;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -156,7 +167,6 @@ nav img:hover {
   
   .hands {
     --rotate: 0;
-  
     position: absolute;
     bottom: 50%;
     left: 50%;
@@ -166,8 +176,8 @@ nav img:hover {
   
   .second {
     /*   --rotate: 90deg; */
-    width: 0.15rem;
-    height: 11rem;
+    width: 2px;
+    height: 70px;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     background-color: #eee;
@@ -176,21 +186,21 @@ nav img:hover {
   
   .minute {
     /*   --rotate: 110deg; */
-    width: 0.5rem;
-    height: 9rem;
+    width: 4px;
+    height: 60px;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
-    background-color: #003d87;
+    background-color: rgb(200,100,100);
     z-index: 11;
   }
   
   .hour {
     /*   --rotate: 60deg; */
-    width: 0.5rem;
-    height: 7rem;
+    width: 4px;
+    height: 40px;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
-    background-color: #005ccc;
+    background-color: rgb(200,100,100);
   }
   
   .number {
@@ -200,7 +210,7 @@ nav img:hover {
     height: 100%;
     text-align: center;
     color: #fff;
-    font-size: 2rem;
+    font-size: 20px;
     transform-origin: center;
     transform: rotate(var(--rotate));
     padding-top: 0.5rem;
@@ -435,15 +445,19 @@ button:hover {
     background-color: rgb(200,100,100);
 }
 
-.bar_1, .bar_2, .bar_3, .bar_4, .bar_5, .bar_6, .bar_7 {
+.bar_0, .bar_1, .bar_2, .bar_3, .bar_4, .bar_5, .bar_6, .bar_7 {
     display: flex;
     flex-direction: row;
     align-items: center !important;
     overflow-x: auto;
 }
 
-.bar_1 {
+.bar_0 {
     width: 70px;
+}
+
+.bar_1 {
+    display: none;
 }
 
 .bar_2 {
@@ -827,15 +841,24 @@ footer {
     padding: 20px;
 }
 
-.bar_1, .bar_2, .bar_3, .bar_4, .bar_5, .bar_6, .bar_7 {
+.bar_0, .bar_1, .bar_2, .bar_3, .bar_4, .bar_5, .bar_6, .bar_7 {
     display: flex;
     flex-direction: row;
     align-items: center !important;
     overflow-x: auto;
 }
 
-.bar_1 {
+.bar_0 {
     width: 10%;
+}
+
+.bar_1 {
+    /* justify-content: center; */
+    width: 10%;
+}
+
+.bar_1 img {
+    width: 20px;
 }
 
 .bar_2 {
@@ -843,7 +866,7 @@ footer {
 }
 
 .bar_3 {
-    width: 25%;
+    width: 20%;
 }
 
 .bar_4 {
@@ -859,7 +882,7 @@ footer {
 }
 
 .bar_7 {
-    width: 15%;
+    width: 10%;
 }
 
 }
@@ -898,14 +921,18 @@ footer {
     margin: auto;
 }
 
-.bar_1, .bar_2, .bar_3, .bar_4, .bar_5, .bar_6, .bar_7 {
+.bar_0, .bar_1, .bar_2, .bar_3, .bar_4, .bar_5, .bar_6, .bar_7 {
     display: flex !important;
     flex-direction: row;
     align-items: center !important;
 }
 
+.bar_0 {
+    width: 5%;
+}
+
 .bar_1 {
-    width: 10%;
+    width: 5%;
 }
 
 .bar_2 {
@@ -930,6 +957,11 @@ footer {
 
 .bar_7 {
     width: 10%;
+}
+
+.information {
+    display: flex;
+    justify-content: space-between;
 }
 
 }

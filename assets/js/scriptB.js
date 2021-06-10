@@ -1,4 +1,6 @@
 
+//Script del Slider de imágenes
+
 cont = 0;
 rev = false;
 
@@ -13,10 +15,3 @@ setInterval(() => {
     cont++;
     sliderEl.scrollLeft += imgWidth;
 }, 5000);
-
-
-
-function onPreviousClick() {
-  const imgWidth = sliderEl.offsetWidth;
-  
-}

@@ -1,4 +1,6 @@
 
+//Scripts para insertar el formulario de cambio de información edl usuario
+
 var edit_email = false; 
 
 function insertFormEmail() {

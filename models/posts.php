@@ -10,6 +10,7 @@
         private $posts_image;
         private $posts_users_id;
         private $posts_topics_id;
+        private $posts_visibility;
 
         function setPosts_date($posts_date) {
             $this->posts_date = $posts_date;
@@ -77,6 +78,14 @@
 
         function getPosts_topics_id() {
             return $this->posts_topics_id;
+        }
+
+        function setPosts_visibility($posts_visibility) {
+            $this->posts_visibility = $posts_visibility;
+        }
+
+        function getPosts_visibility() {
+            return $this->posts_visibility;
         }
 
         function getAll_Posts() {
@@ -161,7 +170,7 @@
 
         function insert_post() {
 
-            $sql = "Insert into posts (posts_title, posts_text, posts_date, posts_last_modification_date, posts_visits_counter, users_id, topics_id) values ('" . htmlspecialchars($this->posts_title) . "', '" . htmlspecialchars($this->posts_text) . "', '{$this->posts_date}', '{$this->posts_last_modification_date}', '{$this->posts_visits_counter}', '{$this->posts_users_id}', '{$this->posts_topics_id}' )";
+            $sql = "Insert into posts (posts_title, posts_text, posts_date, posts_last_modification_date, posts_visits_counter, users_id, topics_id, visibility) values ('" . htmlspecialchars($this->posts_title) . "', '" . htmlspecialchars($this->posts_text) . "', '{$this->posts_date}', '{$this->posts_last_modification_date}', '{$this->posts_visits_counter}', '{$this->posts_users_id}', '{$this->posts_topics_id}', '{$this->posts_visibility}' )";
 
             $this->db->query($sql);
 

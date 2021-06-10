@@ -26,7 +26,7 @@ if (isset($_SESSION["login_error"])) {
 if (isset($_SESSION["user_information"])) {
     echo "<div style='border:0px' class='container'>";
     echo "<h2 style='background-color:green; padding:5px; text-align:center;' >Usuario logeado correctamente</h2>";
-    echo "<p style='text-align: center; margin-top: 15px'>Redirigiendo en 3 segundos...</p>";
+    echo "<p style='text-align: center; margin-top: 15px'>Redirigiendo en <span id='cdT'>3</span> segundos...</p>";
     echo "</div>";
     header("refresh:3;url=" . base_url . "index.php?controllers=users&action=myprofile");
 }

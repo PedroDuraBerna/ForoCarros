@@ -1,3 +1,6 @@
+
+//Script del Reloj
+
 const second = document.querySelector(".second");
 const minute = document.querySelector(".minute");
 const hour = document.querySelector(".hour");

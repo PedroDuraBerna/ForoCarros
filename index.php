@@ -1,5 +1,5 @@
 
-<?php 
+<?php
 
 //Controlador Frontal
 
@@ -16,24 +16,24 @@ require "views/layout/header.php";
 //CONTROLLERS
 
 if (isset($_GET["controllers"])) {
-    
+
     //users
-    
+
     if ($_GET["controllers"] == "users") {
         if (isset($_GET["action"])) {
 
             $u = new UsersController;
-            
+
             //ACTIONS
-            
+
             if ($_GET["action"] == "login") {
                 $usr = $u->login();
             }
-            
+
             if ($_GET["action"] == "logout") {
                 $u->logout();
             }
-            
+
             if ($_GET["action"] == "registration") {
                 $u->registration();
             }
@@ -79,8 +79,8 @@ if (isset($_GET["controllers"])) {
             }
 
             if ($_GET["action"] == "adminConfiguration") {
-                if(isset($_SESSION["user_information"])){
-                    if($_SESSION["user_information"]["users_rol"] == "admin"){
+                if (isset($_SESSION["user_information"])) {
+                    if ($_SESSION["user_information"]["users_rol"] == "admin") {
                         $u->adminConfiguration();
                     } else {
                         echo "no eres admin";
@@ -88,25 +88,22 @@ if (isset($_GET["controllers"])) {
                 } else {
                     echo "no eres admin";
                 }
-                
             }
-            
         }
     }
-    
+
     //start
-    
+
     if ($_GET["controllers"] == "start") {
         if (isset($_GET["action"])) {
 
             $s = new StartController;
-            
+
             //ACTIONS
-            
+
             if ($_GET["action"] == "index") {
                 $s->index();
             }
-            
         }
     }
 
@@ -127,21 +124,19 @@ if (isset($_GET["controllers"])) {
                 if (isset($_GET["name"])) {
                     $p->view_all_posts_by_users_name($_GET["name"]);
                 }
-            }   
-
+            }
         }
-
     }
-    
+
     //topics
-    
+
     if ($_GET["controllers"] == "topics") {
         if (isset($_GET["action"])) {
 
             $t = new TopicsController;
-            
+
             //ACTIONS
-            
+
             if ($_GET["action"] == "all") {
                 $t->all();
             }
@@ -157,7 +152,7 @@ if (isset($_GET["controllers"])) {
             if ($_GET["action"] == "Deportes") {
                 $t->Deportes();
             }
-            
+
             if ($_GET["action"] == "Informática") {
                 $t->Informática();
             }
@@ -225,11 +220,12 @@ if (isset($_GET["controllers"])) {
             if ($_GET["action"] == "Carros") {
                 $t->Carros();
             }
-
+        } else {
+            echo "error";
         }
+    } else {
+        echo "error";
     }
-    
-
 } else {
     $s = new StartController;
     $s->index();
