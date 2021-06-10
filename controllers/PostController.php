@@ -158,6 +158,7 @@ class PostController
             $likes = $posts->num_likes_post($array["posts_id"]);
             $All_Posts[$count]["posts_likes"] = $likes->num_rows;
             $All_Posts[$count]["posts_title"] = $array["posts_title"];
+            $All_Posts[$count]["visibility"] = $array["visibility"];
             $All_Posts[$count]["posts_text"] = $array["posts_text"];
             $All_Posts[$count]["posts_date"] = $array["posts_date"];
             $All_Posts[$count]["posts_last_modification_date"] = $array["posts_last_modification_date"];

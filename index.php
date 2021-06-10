@@ -220,11 +220,7 @@ if (isset($_GET["controllers"])) {
             if ($_GET["action"] == "Carros") {
                 $t->Carros();
             }
-        } else {
-            echo "error";
         }
-    } else {
-        echo "error";
     }
 } else {
     $s = new StartController;

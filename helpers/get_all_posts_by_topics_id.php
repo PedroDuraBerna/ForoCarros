@@ -28,9 +28,12 @@ $u = new Users;
 $result = $p->getAll_posts_by_topics_id_paginated($empezar_desde, $filas_por_pagina, $t->getTopics_id_by_name($info));
 
 while ($obj = $result->fetch_object()) {
+    $likes = $p->num_likes_post($obj->posts_id);
+    $All_Posts[$count]["posts_likes"] = $likes->num_rows;
     $All_Posts[$count]["posts_id"] = $obj->posts_id;
     $All_Posts[$count]["posts_title"] = $obj->posts_title;
     $All_Posts[$count]["posts_text"] = $obj->posts_text;
+    $All_Posts[$count]["visibility"] = $obj->visibility;
     $All_Posts[$count]["posts_date"] = $obj->posts_date;
     $All_Posts[$count]["posts_last_modification_date"] = $obj->posts_last_modification_date;
     $All_Posts[$count]["posts_visits_counter"] = $obj->posts_visits_counter;
