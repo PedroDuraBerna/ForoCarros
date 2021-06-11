@@ -11,7 +11,7 @@ require "autoload.php";
 require "config/db.php";
 require "config/parameters.php";
 require "helpers/utils.php";
-require "views/layout/header.php";
+require_once "views/layout/header.php";
 
 //CONTROLLERS
 

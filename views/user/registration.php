@@ -136,11 +136,12 @@
                     <label for="user_email">Email:</label>
                 </td>
                 <td>
-                    <input type="text" name="user_email" <?php if (isset($_SESSION["info"][0])) echo "value='{$_SESSION["info"][4]}'" ?> required>
+                    <input id="email_form" type="text" name="user_email" <?php if (isset($_SESSION["info"][0])) echo "value='{$_SESSION["info"][4]}'" ?> required>
                 </td>
             </tr>
             <tr>
                 <td class="izq">
+                    <p class="err" id="error_email"></p>
                     <?php
                         if (isset($_SESSION["registration"]["email"]["format"])) {
                             echo "<p class='err'>" . $_SESSION["registration"]["email"]["format"] . "</p>";

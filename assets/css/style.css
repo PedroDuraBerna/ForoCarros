@@ -31,7 +31,7 @@ nav {
     width: 100%;
     display: flex;
     flex-direction: row;
-    background-color: rgb(200,100,100);
+    background-color: #333;
     z-index: 1000;
 }
 
@@ -162,8 +162,7 @@ nav img:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 13;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+    z-index: 13;  
   }
   
   .hands {
@@ -191,7 +190,7 @@ nav img:hover {
     height: 60px;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
-    background-color: rgb(200,100,100);
+    background-color: #333;
     z-index: 11;
   }
   
@@ -201,7 +200,7 @@ nav img:hover {
     height: 40px;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
-    background-color: rgb(200,100,100);
+    background-color: #333;
   }
   
   .number {
@@ -411,7 +410,7 @@ button:hover {
 .img_user img {
     width: 100px;
     height: 100px;
-    background-color: rgb(200,100,100);
+    background-color: #333;
 }
 
 .img_user a {
@@ -443,7 +442,7 @@ button:hover {
     display: flex;
     flex-direction: row;
     color: white;
-    background-color: rgb(200,100,100);
+    background-color: #333;
 }
 
 .bar_0, .bar_1, .bar_2, .bar_3, .bar_4, .bar_5, .bar_6, .bar_7 {
@@ -782,6 +781,10 @@ footer {
     margin-bottom: 80px;
 }
 
+#theme {
+    margin: 20px;
+}
+
 /* MEDIA QUERY */
 
 @media (min-width: 650px) {
@@ -965,4 +968,244 @@ footer {
     justify-content: space-between;
 }
 
+}
+
+/* MODO OSCURO */
+
+.dark_mode .dark_mode header {
+    background-color: #222;
+}
+
+ .dark_mode .dark_mode {
+    background-color: whitesmoke;
+}
+
+ .dark_mode .dark_mode nav {
+   background-color: #333; 
+}
+
+
+.dark_mode header {
+    background-color: #222;
+    color: white;
+}
+
+.dark_mode nav {
+    background-color: #333;
+}
+
+.dark_mode nav img:hover {
+    background-color: #222;
+}
+
+.dark_mode #MainContainer h1 {
+    color: #222;
+}
+
+.dark_mode .container {
+    border: 1px solid #222;
+}
+
+.dark_mode .container h2 {
+    background-color: #222;
+    color: white;
+}
+
+.dark_mode .Slider_container {
+    background: #fff;
+    box-shadow: 0 15px 35px -15px #656565;
+}
+
+.dark_mode .clock {
+    background-color: #222;
+    border: 3px solid black;
+}
+
+.dark_mode .circle {
+    background-color: black;
+}
+
+.dark_mode .second {
+    background-color: #eee;
+    z-index: 12;
+}
+  
+.dark_mode .minute {
+    background-color: #333;
+}
+  
+.dark_mode .hour {
+    background-color: #333;
+}
+
+.dark_mode .admin {
+    color: red;
+}
+
+.dark_mode .user {
+    color: green;
+}
+
+.dark_mode .moderator {
+    color: orange;
+}
+
+.dark_mode button {
+    background-color: #222;
+    color: white;
+    border: 3px solid #222;
+}
+
+.dark_mode button:hover {
+    transition: 0.5s;
+    border: 3px solid black;
+}
+
+.dark_mode .imgProfileEdit {
+    background-color: #222;
+}
+
+.dark_mode .user_photo img {
+    background-color: #222;
+}
+
+.dark_mode .button_change {
+    color: white;
+    background-color: #222;
+    border: 3px solid #222 !important;
+}
+
+ .dark_mode .button_change:hover {
+    border-color: black !important;
+}
+
+ .dark_mode .block_user {
+    border: 1px solid #222;
+}
+
+ .dark_mode .img_user img {
+    background-color: #333;
+}
+
+ .dark_mode .img_user a {
+    background-color: #222;
+    color: white;
+}
+
+ .dark_mode .img_user a:hover {
+    border: 3px solid black;
+}
+
+ .dark_mode .row_post {
+    border: 1px solid #222;
+    color: black;
+}
+
+.dark_mode #start_bar {
+    color: white;
+    background-color: #333;
+}
+
+.dark_mode .row_post:hover {
+    color: white;
+    background-color: #222;
+}
+
+.dark_mode #pagination span {
+    border: 1px solid #222;
+}
+
+.dark_mode .pag {
+    color: #222;
+    background-color: white;
+    border-color: #222;
+}
+
+.dark_mode .link_login {
+    color: black;
+    padding: 20px;
+}
+
+.dark_mode #logout {
+    color: white;
+}
+
+.dark_mode #logout input {
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid white;
+    color: white;
+}
+
+.dark_mode .container input {
+    border: 2px solid rgb(200, 200, 200);
+}
+
+.dark_mode .container input:hover {
+    border-color: #222;
+}
+
+.dark_mode .containerInside {
+    border: 1px solid #222;
+}
+
+.dark_mode .button,  .button_config {
+    background-color: #222;
+    color: white;
+    border: 5px solid #222 !important;
+}
+
+.dark_mode .err {
+    color: red;
+}
+
+.dark_mode .ok {
+    padding: 10px;
+    color: green;
+}
+
+.dark_mode #topics_title {
+    border: 2px solid #222;
+}
+
+.dark_mode .topic_p {
+    border: 1px solid #222;
+}
+
+.dark_mode .topic_a {
+    color: #222;
+}
+
+.dark_mode .topic_a:hover {
+    color: white;
+}
+
+.dark_mode .topic_p:hover {
+    background-color: #222;
+}
+
+.dark_mode .post_info a {
+    background-color: #222;
+    color: white;
+    border: 3px solid #222;
+}
+
+.dark_mode .post_info img{
+    background-color: #222;
+    border-top: 1px solid #222;
+    border-left: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+.dark_mode .post_data {
+    border: 1px solid #222;
+}
+
+.dark_mode .button_post {
+    background-color: #222;
+    border: 3px solid #222 !important;
+    color: white;
+}
+
+.dark_mode nav ul li .menuPC:hover {
+    background-color: #222;
 }

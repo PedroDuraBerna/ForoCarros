@@ -40,7 +40,7 @@ class UsersController
 
         if (isset($_POST["logout"])) {
             $user = new Users;
-            $actual_date = date('Y-m-d h:m:s');
+            $actual_date = date('Y-m-d h:I:s');
             $user->update_last_connection_date($actual_date);
             Utils::deleteSession("user_information");
         }

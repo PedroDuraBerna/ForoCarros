@@ -1,14 +1,15 @@
 </div>
+<select name="theme" id="theme">
+    <option value="classic">Clásico</option>
+    <option value="#222">Oscuro</option>
+</select>
 <footer>Propiedad de Pedro Durá Berná ® Copyright © <?= date("Y"); ?> Crevillente, Alicante.</footer>
-<!-- <select name="theme" id="theme">
-    <option value="red">Rojo</option>
-    <option value="#222">Negro</option>
-    <option value="yellow">Amarillo</option>
-</select> -->
-<script src="<?= base_url ?>assets/js/scriptB.js"></script>
-<script src="<?= base_url ?>assets/js/scriptC.js"></script>
-<script src="<?= base_url ?>assets/js/scriptD.js"></script>
-<script src="<?= base_url ?>assets/js/scriptE.js"></script>
+<script src="<?= base_url ?>assets/js/clock.js"></script>
+<script src="<?= base_url ?>assets/js/insertForm.js"></script>
+<script src="<?= base_url ?>assets/js/slider.js"></script>
+<script src="<?= base_url ?>assets/js/style.js"></script>
 <script src="<?= base_url ?>assets/js/countDown3.js"></script>
+<script src="<?= base_url ?>assets/js/validation.js"></script>
+<script src="<?= base_url ?>assets/js/weather.js"></script>
 </body>
 </html>
