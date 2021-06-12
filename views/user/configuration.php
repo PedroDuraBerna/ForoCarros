@@ -7,16 +7,28 @@
     echo "background-color: #a52a2a !important;";
     echo "color: white;";
     echo "}";
+    echo ".dark_mode #pag" . $pag . " {";
+    echo "background-color: #222 !important;";
+    echo "color: white;";
+    echo "}";
     echo "</style>";
 ?>
 
 <style>
     .button {
-        background-color: rgb(200,100,100) !important;
+        background-color: rgb(200,100,100);
     }
     .button_config {
         background-color: #a52a2a;
         border-color: #a52a2a;
+    }
+    .dark_mode .button {
+        background-color: #333;
+        border-color: #222 !important;
+    }
+    .dark_mode .button_config {
+        background-color: #222 !important;
+        border-color: #222 !important;
     }
 </style>
 

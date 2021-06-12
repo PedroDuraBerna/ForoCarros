@@ -2,6 +2,9 @@
     .postIcon {
         background-color: #a52a2a;
     }
+    .dark_mode .postIcon {
+        background-color: #222;
+    }
 </style>
 
 <h1>Postea en ForoCarros</h1>

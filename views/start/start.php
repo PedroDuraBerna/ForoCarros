@@ -4,6 +4,9 @@
     .homeIcon {
         background-color: #a52a2a;
     }
+    .dark_mode .homeIcon {
+        background-color: #222;
+    }
 </style>
 
 <?php
@@ -12,6 +15,10 @@ echo "#pag" . $pag . " {";
 echo "background-color: #a52a2a !important;";
 echo "color: white;";
 echo "}";
+echo ".dark_mode #pag" . $pag . " {";
+    echo "background-color: #222 !important;";
+    echo "color: white;";
+    echo "}";
 echo "</style>";
 ?>
 

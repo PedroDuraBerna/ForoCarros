@@ -1,4 +1,5 @@
 </div>
+Tema: 
 <select name="theme" id="theme">
     <option value="classic">Clásico</option>
     <option value="#222">Oscuro</option>

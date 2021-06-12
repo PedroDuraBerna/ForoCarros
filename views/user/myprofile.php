@@ -2,6 +2,17 @@
     .profileIcon {
         background-color: #a52a2a;
     }
+    .dark_mode .profileIcon {
+        background-color: #222;
+    }
+    .dark_mode .button{
+        background-color: #222;
+        border-color: #222 !important;
+    }
+    .dark_mode .button_config {
+        background-color: #333 !important;
+        border-color: #222 !important;
+    }
 </style>
 
 <?php
@@ -15,7 +26,7 @@ $user = $_SESSION["user_information"];
     <a href="<?= base_url ?>index.php?controllers=users&action=myprofile" class="button"><img src="<?= base_url ?>assets/img/icons/profile.svg" alt="" srcset=""></a>
     <?php if ($user["users_rol"] == "admin"){
     ?>
-            <a href="<?= base_url ?>index.php?controllers=users&action=adminConfiguration" class="button" style='background-color:rgb(200,100,100); border-color:rgb(200,100,100);'><img src="<?= base_url ?>assets/img/icons/gear.svg" alt="" srcset=""></a>
+            <a href="<?= base_url ?>index.php?controllers=users&action=adminConfiguration" class="button_config"><img src="<?= base_url ?>assets/img/icons/gear.svg" alt="" srcset=""></a>
     <?php
         } 
     ?>

@@ -4,7 +4,11 @@
 <?php
     echo "<style>";
     echo "#pag" . $pag . " {";
-    echo "background-color: #a52a2a !important;";
+    echo "background-color: #a52a2a;";
+    echo "color: white;";
+    echo "}";
+    echo ".dark_mode #pag" . $pag . " {";
+    echo "background-color: #222 !important;";
     echo "color: white;";
     echo "}";
     echo "</style>";

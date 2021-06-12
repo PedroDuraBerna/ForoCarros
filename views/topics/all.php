@@ -5,6 +5,9 @@
         .searchIcon {
             background-color: #a52a2a;
         }
+        .dark_mode .searchIcon {
+            background-color: #222;
+        }
     </style>
 
 <!-- STYLE -->

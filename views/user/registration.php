@@ -5,6 +5,9 @@
         .registrationIcon {
             background-color: #a52a2a;
         }
+        .dark_mode .registrationIcon {
+            background-color: #222;
+        }
     </style>
 
 <!-- STYLE -->
