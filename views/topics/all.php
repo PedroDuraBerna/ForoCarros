@@ -21,7 +21,7 @@
             echo "<a href='" . base_url . "index.php?controllers=topics&action=" . $All_Topics[$i]['Name']. "' class='topic_a'>";
             echo "<p class='topic_p'>";
             echo $All_Topics[$i]["Name"];
-            echo "<img src='" . base_url . "assets/img/topics/" . $All_Topics[$i]["Image"] . "' alt='' srcset=''>";
+            echo "<img src='" . base_url . "assets/img/topics/" . $All_Topics[$i]["Image"] . "' alt='" . $All_Topics[$i]["Image"] . "' srcset=''>";
             echo "</p>";
             echo "</a>";
         }

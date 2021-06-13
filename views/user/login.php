@@ -42,14 +42,14 @@ if (isset($_SESSION["user_information"])) {
         <table>
             <tr>
                 <td class="izq"><label for="user_name">Nombre de Usuario:</label></td>
-                <td><input type="text" name="user_name" id="user_name_input" required></td>
+                <td><input type="text" name="user_name" id="user_name_input"></td>
             </tr>
             <tr>
                 <td><label for="user_password">Contraseña:</label></td>
-                <td><input type="password" name="user_password" id="user_password_input" required></td>
+                <td><input type="password" name="user_password" id="user_password_input"></td>
             </tr>
         </table>
-        <a href="#" class='link_login'>¿Has olvidado la contraseña?</a>
+        <!-- <a href="#" class='link_login'>¿Has olvidado la contraseña?</a> -->
         <div id="buttons" class="buttons_login">
             <input class="button" type="submit" name="enter" value="Entrar"><input class="button" type="submit" name="new_user" value="Nuevo usuario">
         </div>

@@ -1,7 +1,9 @@
+//Scripts para insertar el formulario de cambio de información del usuario
 
-//Scripts para insertar el formulario de cambio de información edl usuario
+//Mediante un "onclick" en el HTML llamamos a la función de insertar un elemento,
+//que cambia el estilo de display "none" a "block", haciendo que aparezca un formulario
 
-var edit_email = false; 
+var edit_email = false;
 
 function insertFormEmail() {
 
@@ -10,7 +12,7 @@ function insertFormEmail() {
 
     edit_email = !edit_email;
 
-    if(edit_email) {
+    if (edit_email) {
         input.style.display = "block";
         text.style.display = "none";
     } else {
@@ -20,7 +22,7 @@ function insertFormEmail() {
 
 }
 
-var edit_interests = false; 
+var edit_interests = false;
 
 function insertFormInterests() {
 
@@ -29,7 +31,7 @@ function insertFormInterests() {
 
     edit_interests = !edit_interests;
 
-    if(edit_interests) {
+    if (edit_interests) {
         input.style.display = "block";
         text.style.display = "none";
     } else {
@@ -39,7 +41,7 @@ function insertFormInterests() {
 
 }
 
-var edit_bio = false; 
+var edit_bio = false;
 
 function insertFormBio() {
 
@@ -48,7 +50,7 @@ function insertFormBio() {
 
     edit_bio = !edit_bio;
 
-    if(edit_bio) {
+    if (edit_bio) {
         input.style.display = "block";
         text.style.display = "none";
     } else {
@@ -58,7 +60,7 @@ function insertFormBio() {
 
 }
 
-var edit_sign = false; 
+var edit_sign = false;
 
 function insertFormSign() {
 
@@ -67,7 +69,7 @@ function insertFormSign() {
 
     edit_sign = !edit_sign;
 
-    if(edit_sign) {
+    if (edit_sign) {
         input.style.display = "block";
         text.style.display = "none";
     } else {
@@ -83,7 +85,7 @@ function insertFormPhoto() {
 
     edit_sign = !edit_sign;
 
-    if(edit_sign) {
+    if (edit_sign) {
         input.style.display = "block";
     } else {
         input.style.display = "none";

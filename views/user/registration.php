@@ -42,7 +42,7 @@
                     <label for="user_name">Nombre de usuario:</label>
                 </td>
                 <td>
-                    <input type="text" name="user_name" <?php if (isset($_SESSION["info"][0])) echo "value='{$_SESSION["info"][0]}'" ?> required>
+                    <input type="text" name="user_name" <?php if (isset($_SESSION["info"][0])) echo "value='{$_SESSION["info"][0]}'" ?> >
                 </td>
             </tr>
             <tr>
@@ -73,7 +73,7 @@
                     <label for="user_birth_date">Fecha nacimiento:</label>
                 </td>
                 <td>
-                    <input type="date" name="user_birth_date" <?php if (isset($_SESSION["info"][0])) echo "value='{$_SESSION["info"][1]}'" ?> required>
+                    <input type="date" name="user_birth_date" <?php if (isset($_SESSION["info"][0])) echo "value='{$_SESSION["info"][1]}'" ?> >
                 </td>
             </tr>
             <tr>
@@ -96,7 +96,7 @@
                     <label for="user_password">Contraseña:</label>
                 </td>
                 <td>
-                    <input type="password" name="user_password" required>
+                    <input type="password" name="user_password" >
                 </td>
             </tr>
             <tr>
@@ -128,7 +128,7 @@
                     <label for="user_password_repited">Confirmar contraseña:</label>
                 </td>
                 <td>
-                    <input type="password" name="user_password_repited" required>
+                    <input type="password" name="user_password_repited" >
                 </td>
             </tr>
             </table>
@@ -139,7 +139,7 @@
                     <label for="user_email">Email:</label>
                 </td>
                 <td>
-                    <input id="email_form" type="text" name="user_email" <?php if (isset($_SESSION["info"][0])) echo "value='{$_SESSION["info"][4]}'" ?> required>
+                    <input id="email_form" type="text" name="user_email" <?php if (isset($_SESSION["info"][0])) echo "value='{$_SESSION["info"][4]}'" ?> >
                 </td>
             </tr>
             <tr>

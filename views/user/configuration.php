@@ -1,31 +1,33 @@
-
 <!-- STYLE -->
 
 <?php
-    echo "<style>";
-    echo "#pag" . $pag . " {";
-    echo "background-color: #a52a2a !important;";
-    echo "color: white;";
-    echo "}";
-    echo ".dark_mode #pag" . $pag . " {";
-    echo "background-color: #222 !important;";
-    echo "color: white;";
-    echo "}";
-    echo "</style>";
+echo "<style>";
+echo "#pag" . $pag . " {";
+echo "background-color: #a52a2a !important;";
+echo "color: white;";
+echo "}";
+echo ".dark_mode #pag" . $pag . " {";
+echo "background-color: #222 !important;";
+echo "color: white;";
+echo "}";
+echo "</style>";
 ?>
 
 <style>
     .button {
-        background-color: rgb(200,100,100);
+        background-color: rgb(200, 100, 100);
     }
+
     .button_config {
         background-color: #a52a2a;
         border-color: #a52a2a;
     }
+
     .dark_mode .button {
         background-color: #333;
         border-color: #222 !important;
     }
+
     .dark_mode .button_config {
         background-color: #222 !important;
         border-color: #222 !important;
@@ -41,11 +43,11 @@ $user = $_SESSION["user_information"];
 
 <div id="buttonConfig">
     <a href="<?= base_url ?>index.php?controllers=users&action=myprofile" class="button"><img src="<?= base_url ?>assets/img/icons/profile.svg" alt="" srcset=""></a>
-    <?php if ($user["users_rol"] == "admin"){
+    <?php if ($user["users_rol"] == "admin") {
     ?>
-        <a href="<?= base_url ?>index.php?controllers=users&action=adminConfiguration" class="button_config" ><img src="<?= base_url ?>assets/img/icons/gear.svg" alt="" srcset=""></a>
+        <a href="<?= base_url ?>index.php?controllers=users&action=adminConfiguration" class="button_config"><img src="<?= base_url ?>assets/img/icons/gear.svg" alt="" srcset=""></a>
     <?php
-        } 
+    }
     ?>
 </div>
 
@@ -114,18 +116,18 @@ $user = $_SESSION["user_information"];
 
 <div id="pagination">
     <?php
-        for ($i = 0; $i < $numero_paginas; $i++) {
-            echo "<a href='" . base_url . "index.php?controllers=users&action=adminConfiguration&pag=" . ($i+1) . "'>";
-            echo "<span class='pag' id='pag".($i+1)."' >".($i+1)."</span>";
-            echo "</a>";
-        }
+    for ($i = 0; $i < $numero_paginas; $i++) {
+        echo "<a href='" . base_url . "index.php?controllers=users&action=adminConfiguration&pag=" . ($i + 1) . "'>";
+        echo "<span class='pag' id='pag" . ($i + 1) . "' >" . ($i + 1) . "</span>";
+        echo "</a>";
+    }
     ?>
-</div> 
+</div>
 
 <div class="container">
-<h2>Usuarios de ForoCarros:</h2>
+    <h2>Usuarios de ForoCarros:</h2>
 
-<?php 
+    <?php
 
     for ($i = 0; $i < count($All_users_info); $i++) {
         echo "<div class='block_user'>";
@@ -143,41 +145,41 @@ $user = $_SESSION["user_information"];
         echo "<tr><td><p><b>Nombre: </b></p></td>";
         echo "<td><p>" . $All_users_info[$i]["users_name"] . "</p></td></tr>";
         echo "<tr><td><p><b>Rol: </b></p></td>";
-        echo "<td><p class='" . $All_users_info[$i]["users_rol"] . "'>" . $All_users_info[$i]["users_rol"] . "</p></td></tr>"; 
+        echo "<td><p class='" . $All_users_info[$i]["users_rol"] . "'>" . $All_users_info[$i]["users_rol"] . "</p></td></tr>";
         echo "<tr><td><p><b>Correo: </b></p></td>";
-        echo "<td><p>" . $All_users_info[$i]["users_email"] . "</p></td></tr>"; 
+        echo "<td><p>" . $All_users_info[$i]["users_email"] . "</p></td></tr>";
         echo "</table>";
         echo "</div>";
         echo "</div>";
         if ($All_users_info[$i]["users_rol"] == "user" || $All_users_info[$i]["users_rol"] == "moderator") {
 
-        echo "<div class='buttons_post'>";
-        echo "<form action='" . base_url . "index.php?controllers=users&action=adminConfiguration' method='post' class='block_buttons'>";
-        if ($All_users_info[$i]["users_rol"] == "user") {
-            echo "<input type='hidden' name='users_id' value='" . $All_users_info[$i]["users_id"] . "'>";
-            echo "<input class='button_post' type='submit' name='user_as_moderator' value='Hacer Moderador'>";
-        } else {
-            echo "<input type='hidden' name='users_id' value='" . $All_users_info[$i]["users_id"] . "'>";
-            echo "<input class='button_post' type='submit' name='user_as_user' value='Hacer Usuario'>";
-        }
-        echo "<input class='button_post' type='submit' name='delete_user' value='Eliminar'>";
-        echo "</form>";
-        echo "</div>";
+            echo "<div class='buttons_post'>";
+            echo "<form action='" . base_url . "index.php?controllers=users&action=adminConfiguration' method='post' class='block_buttons'>";
+            if ($All_users_info[$i]["users_rol"] == "user") {
+                echo "<input type='hidden' name='users_id' value='" . $All_users_info[$i]["users_id"] . "'>";
+                echo "<input class='button_post' type='submit' name='user_as_moderator' value='Hacer Moderador'>";
+            } else {
+                echo "<input type='hidden' name='users_id' value='" . $All_users_info[$i]["users_id"] . "'>";
+                echo "<input class='button_post' type='submit' name='user_as_user' value='Hacer Usuario'>";
+            }
+            echo "<input class='button_post' type='submit' name='delete_user' value='Eliminar'>";
+            echo "</form>";
+            echo "</div>";
         }
         echo "</div>";
     }
 
-?>
+    ?>
 </div>
 
 <div id="pagination">
     <?php
-        for ($i = 0; $i < $numero_paginas; $i++) {
-            echo "<a href='" . base_url . "index.php?controllers=users&action=adminConfiguration&pag=" . ($i+1) . "'>";
-            echo "<span class='pag' id='pag".($i+1)."' >".($i+1)."</span>";
-            echo "</a>";
-        }
+    for ($i = 0; $i < $numero_paginas; $i++) {
+        echo "<a href='" . base_url . "index.php?controllers=users&action=adminConfiguration&pag=" . ($i + 1) . "'>";
+        echo "<span class='pag' id='pag" . ($i + 1) . "' >" . ($i + 1) . "</span>";
+        echo "</a>";
+    }
     ?>
-</div> 
+</div>
 
 </div>

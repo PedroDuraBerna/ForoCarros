@@ -2,9 +2,12 @@
 
 actualizarClase();
 
-$(document).ready(function () {
+//La web está pendiente de que hagamos clik a una opción del desplegable, cuando clikamos entonces se llama a la función "actualizarClase", guardando
+//además la opción que hemos clicado en el LocaStorage
 
-    $("#theme").on("change", function (e) {
+$(document).ready(function() {
+
+    $("#theme").on("change", function(e) {
 
         console.log(e.target.value);
 
@@ -16,6 +19,7 @@ $(document).ready(function () {
 
 });
 
+//Con esta función introducimos la clase .dark_mode al body, haciendo que cambie de estilo completamente
 
 function actualizarClase() {
 
@@ -24,10 +28,10 @@ function actualizarClase() {
         $("#theme").val(theme);
         if (theme == "#222" && !$("body").hasClass("dark_mode")) {
             $("body").addClass("dark_mode");
-        } 
+        }
         if (theme == "classic" && $("body").hasClass("dark_mode")) {
             $("body").removeClass("dark_mode");
-        } 
+        }
     }
 
 }

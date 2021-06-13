@@ -1,0 +1,9 @@
+# robots.txt for https://www.forocarros.es/
+
+User-agent: UniversalRobot/1.0
+User-agent: my-robot
+Disallow: /sources/dtd/
+
+User-agent: *
+Disallow: /temp/
+Disallow: /assets/models
